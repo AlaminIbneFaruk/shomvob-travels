@@ -106,6 +106,12 @@ const Routes = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+      {
+        path: "/trips",
+        element: <>
+        Trips
+        </>,
+      },
     ],
   },
   {

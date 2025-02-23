@@ -1,10 +1,14 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../Contexts/AuthProvider";
+
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path ? "text-blue-500" : "text-white";
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-sky-400 shadow-md p-4 flex justify-between items-center z-50">
@@ -13,24 +17,24 @@ const Navbar = () => {
         <span className="text-xl font-bold text-white">Shomvob Travels</span>
       </div>
       <div className="flex items-center gap-6">
-        <Link to="/" className="text-white hover:underline">
+        <Link to="/" className={`${isActive("/")} btn-outline btn hover:underline`}>
           Home
         </Link>
-        <Link to="/community" className="text-white hover:underline">
+        <Link to="/community" className={`${isActive("/community")} btn-outline btn hover:underline`}>
           Community
         </Link>
-        <Link to="/about" className="text-white hover:underline">
+        <Link to="/about" className={`${isActive("/about")} btn-outline btn hover:underline`}>
           About Us
         </Link>
-        <Link to="/trips" className="text-white hover:underline">
+        <Link to="/trips" className={`${isActive("/trips")} btn-outline btn hover:underline`}>
           Trips
         </Link>
         {!user ? (
           <>
-            <Link to="/login" className="text-white hover:underline">
+            <Link to="/login" className= {`${isActive("/login")} btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 `}>
               Login
             </Link>
-            <Link to="/register" className="text-white hover:underline">
+            <Link to="/register" className={`${isActive("/register")} btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 `}>
               Register
             </Link>
           </>
