@@ -14,8 +14,9 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-sky-400 shadow-md p-4 flex justify-between items-center z-50">
       <div className="flex items-center gap-2">
-        <img src="/logo.png" alt="Logo" className="w-10 h-10" />
-        <span className="text-xl font-bold text-white">Shomvob Travels</span>
+      <Link to="/" className={`text-white btn btn-ghost py-2 font-extrabold font-sans text-lg lg:text-3xl`}>
+          Shomvob Travels
+        </Link>
       </div>
 
       {/* Desktop Menu */}
@@ -34,10 +35,10 @@ const Navbar = () => {
         </Link>
         {!user && (
           <>
-            <Link to="/login" className={`${isActive("/login")} btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600`}>
+            <Link to="/login" className={`${isActive("/login")} btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 to-blue-500 `}>
               Login
             </Link>
-            <Link to="/register" className={`${isActive("/register")} btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600`}>
+            <Link to="/register" className={`${isActive("/register")} btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 to-blue-500 `}>
               Register
             </Link>
           </>
@@ -91,10 +92,10 @@ const Navbar = () => {
           </Link>
           {!user ? (
             <>
-              <Link to="/login" className="btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 mt-2" onClick={() => setMenuOpen(false)}>
+              <Link to="/login" className="btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 to-blue-500 mt-2" onClick={() => setMenuOpen(false)}>
                 Login
               </Link>
-              <Link to="/register" className="btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 mt-2" onClick={() => setMenuOpen(false)}>
+              <Link to="/register" className="btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 to-blue-500  mt-2" onClick={() => setMenuOpen(false)}>
                 Register
               </Link>
             </>
