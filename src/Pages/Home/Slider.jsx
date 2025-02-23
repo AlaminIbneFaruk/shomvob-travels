@@ -38,7 +38,7 @@ const Slider = () => {
   const prevSlide = () => setIndex((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <div className="relative w-full h-[500px] overflow-hidden rounded-2xl shadow-lg">
+    <div className="relative w-full min-h-[500px] overflow-hidden rounded-2xl shadow-lg ">
       <AnimatePresence>
         <motion.div
           key={index}
