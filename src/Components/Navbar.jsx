@@ -8,7 +8,7 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const location = useLocation();
 
-  const isActive = (path) => location.pathname === path ? "text-blue-500" : "text-white";
+  const isActive = (path) => location.pathname === path ? "text-black" : "text-white";
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-sky-400 shadow-md p-4 flex justify-between items-center z-50">
