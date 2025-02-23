@@ -5,19 +5,19 @@ import Hero from "./Hero";
 
 const slides = [
   {
-    image: "/images/hero1.jpg",
+    image: "https://i.ibb.co.com/twnYDdGg/bg-3.jpg",
     title: "Discover Your Next Adventure",
     description: "Explore breathtaking destinations and create unforgettable memories.",
     buttonText: "Explore Now",
   },
   {
-    image: "/images/hero2.jpg",
+    image: "https://i.ibb.co.com/NdhDpPM6/bg2.webp",
     title: "Experience Luxury Travel",
     description: "Indulge in world-class accommodations and premium services.",
     buttonText: "Book a Trip",
   },
   {
-    image: "/images/hero3.jpg",
+    image: "https://i.ibb.co.com/wFhzgbjX/heroimg1.jpg",
     title: "Travel Beyond Limits",
     description: "Unleash your wanderlust and explore hidden gems around the world.",
     buttonText: "Start Your Journey",
