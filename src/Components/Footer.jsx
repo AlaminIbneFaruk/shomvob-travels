@@ -2,22 +2,26 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/f
 
 const Footer = () => {
   return (
-    <footer className=" bg-indigo-600  text-white py-10 px-6 md:px-12">
+    <footer className="bg-indigo-600 text-white py-10 px-6 md:px-12">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         {/* Company Info */}
         <div>
           <h2 className="text-2xl font-semibold mb-3">Shomvob Travels</h2>
-          <p className="text-gray-100">Shomvob Travels offers seamless travel experiences with curated tours, hassle-free bookings, and personalized itineraries for every journey..</p>
+          <p className="text-gray-100">
+            Shomvob Travels offers seamless travel experiences with curated tours, hassle-free bookings, and personalized itineraries for every journey.
+          </p>
         </div>
 
         {/* Navigation Links */}
         <div>
           <h3 className="text-xl font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="text-gray-100 hover:text-white">Home</a></li>
-            <li><a href="#" className="text-gray-100 hover:text-white">About</a></li>
-            <li><a href="#" className="text-gray-100 hover:text-white">Services</a></li>
-            <li><a href="#" className="text-gray-100 hover:text-white">Contact</a></li>
+            <li><a href="/" className="text-gray-100 hover:text-white">Home</a></li>
+            <li><a href="/about" className="text-gray-100 hover:text-white">About</a></li>
+            <li><a href="/community" className="text-gray-100 hover:text-white">Community </a></li>
+            <li><a href="/trips" className="text-gray-100 hover:text-white">Trips </a></li>
+            <li><a href="/login" className="text-gray-100 hover:text-white">Login</a></li>
+            <li><a href="/register" className="text-gray-100 hover:text-white">Register</a></li>
           </ul>
         </div>
 
