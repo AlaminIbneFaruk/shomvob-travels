@@ -8,6 +8,10 @@ import Layout from "../Layout/Layout.jsx";
 import PrivateRoutes from "./PrivateRoutes.jsx";
 import ErrorF2F from "../Pages/ErrorF2F/ErrorF2F.jsx";
 import Hero from "../Pages/Home/Hero.jsx";
+import Trip from "../Pages/Trip/Trip.jsx";
+import Package from "../Pages/Package/Package.jsx";
+import About from "../Pages/About/About.jsx";
+import Community from "../Pages/Community/Community.jsx";
 
 const Routes = createBrowserRouter([
   {
@@ -20,7 +24,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/toursimpackages",
-        element: <>tourism packages</>,
+        element: <Package></Package>,
         errorElement: (
           <>
             <ErrorF2F></ErrorF2F>
@@ -29,7 +33,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <>About US</>,
+        element: <About></About>,
         errorElement: (
           <>
             <ErrorF2F></ErrorF2F>
@@ -96,10 +100,7 @@ const Routes = createBrowserRouter([
       {
         path: "/community",
         element: (
-          <div>
-            <Hero></Hero>
-            Communities
-          </div>
+          <Community/>
         ),
       },
       {
@@ -108,9 +109,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/trips",
-        element: <>
-        Trips
-        </>,
+        element: <Trip/>,
       },
     ],
   },

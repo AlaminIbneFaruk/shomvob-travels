@@ -49,10 +49,10 @@ const Navbar = () => {
               <img src={user.photoURL || FaUserCircle} alt="Profile" className="w-10 h-10 rounded-full border border-white" />
             </button>
             {dropdownOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white/80 backdrop-blur-lg shadow-lg rounded-lg p-4">
+              <div className="absolute right-0 mt-2 bg-white/80 backdrop-blur-lg shadow-lg rounded-lg p-4">
                 <p className="text-gray-800 font-bold">{user.displayName}</p>
-                <p className="text-gray-600 text-sm">{user.email}</p>
-                <hr className="my-2" />
+                <p className="text-gray-600 text-xs overflow-wrap mr-6">{user.email}</p>
+                <hr className="my-2"/>
                 <Link to="/dashboard" className="block text-gray-800 hover:bg-gray-100 px-2 py-1 rounded">
                   Dashboard
                 </Link>
