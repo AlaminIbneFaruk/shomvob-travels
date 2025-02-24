@@ -1,4 +1,4 @@
-import Hero from "../Home/Hero";
+import Hero from "../../Components/Hero";
 
 const Community = () => {
   return (

@@ -1,0 +1,64 @@
+{
+  "travelPackages": [
+    {
+      "id": 1,
+      "name": "Sundarbans Wildlife Adventure",
+      "duration": "4 days",
+      "price": 9999.99,
+      "description": "Explore the world's largest mangrove forest and witness the majestic Royal Bengal Tiger.",
+      "inclusions": [
+        "Round-trip boat transport",
+        "Luxury cruise stay",
+        "Guided forest safari",
+        "All meals included"
+      ],
+      "destination": "Sundarbans",
+      "highlights": [
+        "Wildlife spotting (Royal Bengal Tiger, deer, crocodiles)",
+        "Mangrove forest boat tour",
+        "Visit to local fishing villages"
+      ],
+      "image": "https://i.ibb.co.com/20drZp3T/Sundarban.jpg" 
+    },
+    {
+      "id": 2,
+      "name": "Cox’s Bazar Beach Retreat",
+      "duration": "3 days",
+      "price": 7999.99,
+      "description": "Relax on the longest natural sea beach in the world with luxury accommodations and thrilling activities.",
+      "inclusions": [
+        "Round-trip airfare from Dhaka",
+        "5-star beachfront hotel stay",
+        "Daily buffet breakfast",
+        "Beach activities & sightseeing tour"
+      ],
+      "destination": "Cox’s Bazar",
+      "highlights": [
+        "Sunset views at Inani Beach",
+        "Speedboat ride to Saint Martin’s Island",
+        "Explore Himchari Waterfall & Marine Drive"
+      ],
+      "image": "https://i.ibb.co.com/9HbhrLh1/coxsbazar.jpg" 
+    },
+    {
+      "id": 3,
+      "name": "Sylhet Tea Garden Escape",
+      "duration": "3 days",
+      "price": 6999.99,
+      "description": "Immerse yourself in the serene beauty of Sylhet’s lush green tea gardens and waterfalls.",
+      "inclusions": [
+        "Round-trip AC transport",
+        "Resort stay in tea estate",
+        "Tea plantation tour & tasting",
+        "Excursion to Jaflong & Ratargul Swamp Forest"
+      ],
+      "destination": "Sylhet",
+      "highlights": [
+        "Explore the breathtaking Jaflong hills",
+        "Boat ride through Ratargul Swamp Forest",
+        "Experience authentic tea culture"
+      ],
+      "image": "https://i.ibb.co.com/jkcNySw2/syhlet.jpg" 
+    }
+  ]
+}

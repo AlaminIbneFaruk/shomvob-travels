@@ -7,7 +7,7 @@ import ErrorPage from "../Pages/ErrorPages/ErrorPage.jsx";
 import Layout from "../Layout/Layout.jsx";
 import PrivateRoutes from "./PrivateRoutes.jsx";
 import ErrorF2F from "../Pages/ErrorF2F/ErrorF2F.jsx";
-import Hero from "../Pages/Home/Hero.jsx";
+import Hero from "../Components/Hero.jsx";
 import Trip from "../Pages/Trip/Trip.jsx";
 import Package from "../Pages/Package/Package.jsx";
 import About from "../Pages/About/About.jsx";
