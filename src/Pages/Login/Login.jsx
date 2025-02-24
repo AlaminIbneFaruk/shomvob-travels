@@ -8,7 +8,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [success, setSuccess] = useState(false);
   const emailref = useRef(null);
-  const { signInUser, signInGoogle } = useContext(AuthContext);
+  const { signInUser, signInGoogle, resetPassword } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
@@ -45,6 +45,9 @@ const Login = () => {
       });
   };
 
+  const handleReset=()=>{
+    resetPassword()
+  }
   return (
     <>
       <Helmet>
@@ -87,9 +90,9 @@ const Login = () => {
                 required
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+                <button to="#" className="label-text-alt link link-hover" onClick={handleReset}>
                   Forgot password?
-                </a>
+                </button>
               </label>
             </div>
             <div className="form-control mt-2 gap-5">
