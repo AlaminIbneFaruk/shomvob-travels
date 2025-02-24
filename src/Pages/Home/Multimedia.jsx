@@ -26,7 +26,7 @@ const Multimedia = () => {
         {/* Call to Action Button using Link */}
         <Link 
           to="/booking" 
-          className="mt-4 px-6 py-2 bg-yellow-500 text-black font-semibold rounded-lg shadow-lg transition duration-300 hover:bg-yellow-400"
+          className="mt-4 px-6 py-2 bg-sky-500 text-white font-semibold rounded-lg shadow-lg transition duration-300 hover:bg-yellow-400"
         >
           Book Your Adventure
         </Link>
