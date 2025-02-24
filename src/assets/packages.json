@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "Tropical Paradise Getaway",
+    "duration": "7 days",
+    "price": 1499.99,
+    "description": "Escape to a tropical paradise with our all-inclusive package. Enjoy luxurious accommodations, breathtaking beaches, and thrilling water sports.",
+    "inclusions": [
+      "Round-trip airfare",
+      "5-star hotel accommodations",
+      "Daily breakfast and dinner",
+      "Guided city tour",
+      "Water sports activities"
+    ],
+    "destination": "Maldives",
+    "highlights": [
+      "Relax on pristine beaches",
+      "Explore vibrant coral reefs",
+      "Visit local markets",
+      "Enjoy sunset cruises"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "European Adventure",
+    "duration": "10 days",
+    "price": 2999.99,
+    "description": "Discover the rich culture and history of Europe with our guided tour. Experience the beauty of iconic cities and stunning landscapes.",
+    "inclusions": [
+      "Round-trip airfare",
+      "4-star hotel accommodations",
+      "Daily breakfast",
+      "Guided tours in major cities",
+      "Train tickets between cities"
+    ],
+    "destination": "Italy, France, Spain",
+    "highlights": [
+      "Visit the Eiffel Tower",
+      "Explore the Colosseum",
+      "Stroll through Barcelona's Gothic Quarter",
+      "Enjoy local cuisine"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Adventure in the Wild",
+    "duration": "5 days",
+    "price": 899.99,
+    "description": "Join us for an exciting adventure in the great outdoors. Experience hiking, wildlife watching, and camping under the stars.",
+    "inclusions": [
+      "Transportation to national parks",
+      "Camping gear rental",
+      "Guided hiking tours",
+      "Meals during the trip",
+      "Wildlife spotting excursions"
+    ],
+    "destination": "Yellowstone National Park, USA",
+    "highlights": [
+      "Witness geysers and hot springs",
+      "Spot bison and elk",
+      "Hike through breathtaking landscapes",
+      "Campfire evenings"
+    ]
+  }
+]

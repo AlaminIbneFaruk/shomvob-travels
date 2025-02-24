@@ -1,9 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css"; // Core styles
-import "swiper/css/navigation"; // Navigation styles
-import "swiper/css/pagination"; // Pagination styles
+import "swiper/css";
+import "swiper/css/navigation"; 
+import "swiper/css/pagination"; 
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import Hero from "./Hero"; // Your existing Hero component
+import Hero from "../../Components/Hero"; 
 
 
 const Slider = () => {
