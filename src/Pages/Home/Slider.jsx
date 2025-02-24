@@ -35,7 +35,7 @@ const Slider = () => {
         pagination={{ clickable: true }}
         autoplay={{ delay: 7000, disableOnInteraction: false }}
         loop={true}
-        className="rounded-2xl shadow-lg"
+        className="shadow-lg"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>

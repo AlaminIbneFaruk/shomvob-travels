@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 
 import Slider from "./Slider.jsx";
+import OverviewSection from "./OverviewSection.jsx";
 const Home = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const Home = () => {
       </Helmet>
 
       <Slider></Slider>
+      <OverviewSection></OverviewSection>
     </>
   );
 };
