@@ -1,0 +1,39 @@
+
+[
+  {
+    "id": 1,
+    "name": "Sundarbans",
+    "description": "Explore the largest mangrove forest in the world, home to the Royal Bengal Tiger.",
+    "image": "https://i.ibb.co.com/20drZp3T/Sundarban.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Cox's Bazar",
+    "description": "Visit the longest natural sea beach in the world, famous for its beautiful sunset.",
+    "image": "https://i.ibb.co.com/9HbhrLh1/coxsbazar.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Srimangal",
+    "description": "Discover the tea capital of Bangladesh, known for its lush green hills and tea gardens.",
+    "image": "https://i.ibb.co.com/2Yysf1zs/srimangal.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Dhaka",
+    "description": "Experience the vibrant capital city with its rich history and diverse culture.",
+    "image": "https://i.ibb.co.com/SDRNb4SM/Dhaka.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Bandarban",
+    "description": "Explore the stunning hill tracts of Bandarban, known for its scenic beauty and tribal culture.",
+    "image": "https://i.ibb.co.com/C3Sp9RQq/Bandarban.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Rangamati",
+    "description": "Enjoy the picturesque landscapes and tribal heritage in the heart of the Chittagong Hill Tracts.",
+    "image": "https://i.ibb.co.com/j92p8GxS/rangamati.jpg"
+  }
+]

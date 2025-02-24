@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import Slider from "./Slider.jsx";
 import OverviewSection from "./OverviewSection.jsx";
 import Multimedia from "./Multimedia.jsx";
-import PlanSection from "./PlanSection.jsx";
+import CustomTabs from "./CustomTabs.jsx"
 const Home = () => {
   return (
     <>
@@ -19,9 +19,9 @@ const Home = () => {
       <Slider></Slider>
       <OverviewSection></OverviewSection>
       <Multimedia></Multimedia>
-      <PlanSection></PlanSection>
+      <CustomTabs></CustomTabs>
     </>
-  );
+);
 };
 
 export default Home;
