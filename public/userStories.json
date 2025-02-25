@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "rating": 5,
+    "comment": "Exploring the Sundarbans was a dream come true! The serene beauty of the mangroves, the thrill of spotting a Royal Bengal Tiger, and the boat ride through the winding rivers made this an unforgettable adventure.",
+    "image": "https://i.ibb.co.com/20drZp3T/Sundarban.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Doe Harvey",
+    "rating": 4,
+    "comment": "Visiting Cox’s Bazar was an incredible experience. Walking along the world’s longest sea beach, tasting fresh seafood, and watching the sunset over the Bay of Bengal were the highlights of my trip!",
+    "image": "https://i.ibb.co.com/9HbhrLh1/coxsbazar.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Harvey Dent",
+    "rating": 4,
+    "comment": "Visiting Srimangal was an incredible experience. Walking along the beautiful tea garden, tasting mixed tea, and watching the sunset over the hills of Syhlet were the highlights of my trip!"
+  }
+]
