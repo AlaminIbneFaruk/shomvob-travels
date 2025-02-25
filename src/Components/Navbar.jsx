@@ -9,51 +9,65 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
-  const isActive = (path) => (location.pathname === path ? "text-black" : "text-white");
+  const isDashboard = (path) =>
+    location.pathname === path ? "hidden" : "bg-sky-400 text-white";
+
+  const isActive = (path) =>
+    location.pathname === path ? "font-bold underline text-black" : "text-white";
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-sky-400 shadow-md p-4 flex justify-between items-center z-50">
+    <nav
+      className={`fixed top-0 left-0 w-full ${isDashboard(
+        `/userdashboard/${user?.uid}`
+      )} shadow-md p-4 flex justify-between items-center z-50`}
+    >
       <div className="flex items-center gap-2">
-      <Link to="/" className={`text-white btn btn-ghost py-2 font-extrabold font-sans text-lg lg:text-3xl`}>
+        <Link to="/" className="btn btn-ghost py-2 font-extrabold font-sans text-lg lg:text-3xl">
           Shomvob Travels
         </Link>
       </div>
 
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-6">
-        <Link to="/" className={`${isActive("/")} text-white btn btn-outline py-2`}>
+        <Link to="/" className={`${isActive("/")} btn btn-outline py-2`}>
           Home
         </Link>
-        <Link to="/community" className={`${isActive("/community")} text-white btn btn-outline py-2`}>
+        <Link to="/community" className={`${isActive("/community")} btn btn-outline py-2`}>
           Community
         </Link>
-        <Link to="/about" className={`${isActive("/about")} text-white btn btn-outline py-2`}>
+        <Link to="/about" className={`${isActive("/about")} btn btn-outline py-2`}>
           About Us
         </Link>
-        <Link to="/trips" className={`${isActive("/trips")} text-white btn btn-outline py-2`}>
+        <Link to="/trips" className={`${isActive("/trips")} btn btn-outline py-2`}>
           Trips
         </Link>
-        {!user && (
+        {!user ? (
           <>
-            <Link to="/login" className={`${isActive("/login")} btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 to-blue-500 `}>
+            <Link to="/login" className="btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 to-blue-500">
               Login
             </Link>
-            <Link to="/register" className={`${isActive("/register")} btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 to-blue-500 `}>
+            <Link to="/register" className="btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 to-blue-500">
               Register
             </Link>
           </>
-        )}
-        {user && (
+        ) : (
           <div className="relative">
-            <button onClick={() => setDropdownOpen(!dropdownOpen)} className="flex items-center gap-2 focus:outline-none">
-              <img src={user.photoURL || FaUserCircle} alt="Profile" className="w-10 h-10 rounded-full border border-white" />
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="flex items-center gap-2 focus:outline-none"
+            >
+              {user.photoURL ? (
+                <img src={user.photoURL} alt="Profile" className="w-10 h-10 rounded-full border border-white" />
+              ) : (
+                <FaUserCircle className="w-10 h-10 text-sky-500" />
+              )}
             </button>
             {dropdownOpen && (
-              <div className="absolute right-0 mt-2 bg-white/80 backdrop-blur-lg shadow-lg rounded-lg p-4">
+              <div className="absolute right-0 mt-2 bg-white/90 backdrop-blur-lg shadow-lg rounded-lg p-4">
                 <p className="text-gray-800 font-bold">{user.displayName}</p>
-                <p className="text-gray-600 text-xs overflow-wrap mr-6">{user.email}</p>
-                <hr className="my-2"/>
-                <Link to="/dashboard" className="block text-gray-800 hover:bg-gray-100 px-2 py-1 rounded">
+                <p className="text-gray-600 text-xs break-words">{user.email}</p>
+                <hr className="my-2" />
+                <Link to={`/userdashboard/${user.uid}`} className="block text-gray-800 hover:bg-gray-100 px-2 py-1 rounded">
                   Dashboard
                 </Link>
                 <Link to="/offers" className="block text-gray-800 hover:bg-gray-100 px-2 py-1 rounded">
@@ -78,36 +92,50 @@ const Navbar = () => {
       {/* Mobile Dropdown */}
       {menuOpen && (
         <div className="absolute top-16 left-0 w-full bg-sky-400 shadow-md flex flex-col items-center p-4 md:hidden">
-          <Link to="/" className={`${isActive("/")} text-white py-2`} onClick={() => setMenuOpen(false)}>
+          <Link to="/" className={`${isActive("/")} py-2`} onClick={() => setMenuOpen(false)}>
             Home
           </Link>
-          <Link to="/community" className={`${isActive("/community")} text-white py-2`} onClick={() => setMenuOpen(false)}>
+          <Link to="/community" className={`${isActive("/community")} py-2`} onClick={() => setMenuOpen(false)}>
             Community
           </Link>
-          <Link to="/about" className={`${isActive("/about")} text-white py-2`} onClick={() => setMenuOpen(false)}>
+          <Link to="/about" className={`${isActive("/about")} py-2`} onClick={() => setMenuOpen(false)}>
             About Us
           </Link>
-          <Link to="/trips" className={`${isActive("/trips")} text-white py-2`} onClick={() => setMenuOpen(false)}>
+          <Link to="/trips" className={`${isActive("/trips")} py-2`} onClick={() => setMenuOpen(false)}>
             Trips
           </Link>
           {!user ? (
             <>
-              <Link to="/login" className="btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 to-blue-500 mt-2" onClick={() => setMenuOpen(false)}>
+              <Link
+                to="/login"
+                className="btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 to-blue-500 mt-2"
+                onClick={() => setMenuOpen(false)}
+              >
                 Login
               </Link>
-              <Link to="/register" className="btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 to-blue-500  mt-2" onClick={() => setMenuOpen(false)}>
+              <Link
+                to="/register"
+                className="btn-outline btn hover:underline bg-gradient-to-r from-cyan-400 to-blue-500 mt-2"
+                onClick={() => setMenuOpen(false)}
+              >
                 Register
               </Link>
             </>
           ) : (
             <>
-              <Link to="/dashboard" className="text-white py-2" onClick={() => setMenuOpen(false)}>
+              <Link to={`/userdashboard/${user.uid}`} className="py-2" onClick={() => setMenuOpen(false)}>
                 Dashboard
               </Link>
-              <Link to="/offers" className="text-white py-2" onClick={() => setMenuOpen(false)}>
+              <Link to="/offers" className="py-2" onClick={() => setMenuOpen(false)}>
                 Offer Announcements
               </Link>
-              <button onClick={() => { signOutUser(); setMenuOpen(false); }} className="text-red-600 py-2">
+              <button
+                onClick={() => {
+                  signOutUser();
+                  setMenuOpen(false);
+                }}
+                className="text-red-600 py-2"
+              >
                 Logout
               </button>
             </>

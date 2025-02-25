@@ -18,7 +18,8 @@
         "Mangrove forest boat tour",
         "Visit to local fishing villages"
       ],
-      "image": "https://i.ibb.co.com/20drZp3T/Sundarban.jpg" 
+      "image": "https://i.ibb.co.com/20drZp3T/Sundarban.jpg",
+      "tourType": "Wildlife Adventure"
     },
     {
       "id": 2,
@@ -38,7 +39,8 @@
         "Speedboat ride to Saint Martin’s Island",
         "Explore Himchari Waterfall & Marine Drive"
       ],
-      "image": "https://i.ibb.co.com/9HbhrLh1/coxsbazar.jpg" 
+      "image": "https://i.ibb.co.com/9HbhrLh1/coxsbazar.jpg",
+      "tourType": "Beach Retreat"
     },
     {
       "id": 3,
@@ -58,7 +60,8 @@
         "Boat ride through Ratargul Swamp Forest",
         "Experience authentic tea culture"
       ],
-      "image": "https://i.ibb.co.com/jkcNySw2/syhlet.jpg" 
+      "image": "https://i.ibb.co.com/jkcNySw2/syhlet.jpg",
+      "tourType": "Cultural Experience"
     }
   ]
 }

@@ -1,66 +1,65 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-
-// Custom hook for debouncing
-
+import { useNavigate } from "react-router-dom";
 
 const TravelGuide = () => {
-  const [destinations, setDestinations] = useState([]);
+  const [tourGuides, setTourGuides] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-
-// Debounce the search input
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchDestinations = async () => {
+    const fetchTourGuides = async () => {
       try {
         const res = await fetch("/tourguides.json");
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await res.json();
-        setDestinations(data);
+        setTourGuides(data);
       } catch (error) {
-        console.error("Error fetching destinations:", error);
+        console.error("Error fetching tour guides:", error);
         setIsError(true);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchDestinations();
-  }, []); // Empty dependency array to run only once on mount
-
-
+    fetchTourGuides();
+  }, []);
 
   if (isLoading) {
-    return <div className="loader">Loading...</div>; // Placeholder for loading
+    return <div className="loader">Loading...</div>;
   }
 
   if (isError) {
-    return <p>Error loading destinations.</p>; // Error message
+    return <p>Error loading tour guides.</p>;
   }
 
   return (
     <div className="p-6 mx-auto">
-      <h1 className="text-3xl font-bold mb-4">Explore Destinations</h1>
+      <h1 className="text-3xl font-bold mb-4">Meet Our Tour Guides</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {destinations?.map((dest) => (
+        {tourGuides.map((guide) => (
           <motion.div
-            key={dest.id}
+            key={guide.id}
             whileHover={{ scale: 1.05 }}
             className="bg-white rounded-2xl shadow-md overflow-hidden"
           >
             <div className="card">
               <img
-                src={dest.image}
-                alt={dest.name}
+                src={guide.image}
+                alt={guide.name}
                 className="w-full h-40 object-cover"
               />
               <div className="p-4 card-content">
-                <h2 className="text-xl font-semibold">{dest.name}</h2>
-                <p className="text-gray-600 text-sm">{dest.description}</p>
-                <button className="btn btn-info mt-2 w-full">
+                <h2 className="text-xl font-semibold">{guide.name}</h2>
+                <p className="text-gray-600 text-sm">Languages: {guide.language.join(", ")}</p>
+                <p className="text-gray-600 text-sm">Experience: {guide.experience}</p>
+                <button
+                  className="btn btn-info mt-2 w-full"
+                  onClick={() => navigate(`/guide/${guide.id}`)}
+                >
                   View Details
                 </button>
               </div>

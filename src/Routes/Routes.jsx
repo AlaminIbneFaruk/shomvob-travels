@@ -12,6 +12,7 @@ import Trip from "../Pages/Trip/Trip.jsx";
 import Package from "../Pages/Package/Package.jsx";
 import About from "../Pages/About/About.jsx";
 import Community from "../Pages/Community/Community.jsx";
+import DashboardLayout from "../Components/Dashboard.jsx";
 
 const Routes = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ const Routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/toursimpackages",
+        path: "/package-details",
         element: <Package></Package>,
         errorElement: (
           <>
@@ -53,10 +54,7 @@ const Routes = createBrowserRouter([
         path: "/userdashboard/:userid",
         element: (
           <PrivateRoutes>
-            <>
-              <Hero></Hero>
-              userdashboard
-            </>
+            <DashboardLayout/>
           </PrivateRoutes>
         ),
       },

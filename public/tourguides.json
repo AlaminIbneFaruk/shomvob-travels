@@ -1,39 +1,50 @@
-
 [
-  {
-    "id": 1,
-    "name": "Sundarbans",
-    "description": "Explore the largest mangrove forest in the world, home to the Royal Bengal Tiger.",
-    "image": "https://i.ibb.co.com/20drZp3T/Sundarban.jpg"
+  { 
+      "id":1,
+      "name": "Rahim Khan",
+      "language": ["Bengali"],
+      "experience": "5 years",
+      "bio": "Expert in historical and cultural tours.",
+      "image": "https://i.ibb.co.com/rRXy9CTs/Tour-Guide1.jpg"
+  },
+  { 
+      "id":3,
+      "name": "Sakib Hasan",
+      "language": ["Bengali","English"],
+      "experience": "7 years",
+      "bio": "Specializes in eco-tourism and wildlife.",
+      "image": "https://i.ibb.co.com/fjZbbhD/Tour-Guide3.jpg"
   },
   {
-    "id": 2,
-    "name": "Cox's Bazar",
-    "description": "Visit the longest natural sea beach in the world, famous for its beautiful sunset.",
-    "image": "https://i.ibb.co.com/9HbhrLh1/coxsbazar.jpg"
+      "id":5,
+      "name": "Anik Ahmed",
+      "language": ["Bengali","English"],
+      "experience": "6 years",
+      "bio": "Guides adventure and trekking tours.",
+      "image": "https://i.ibb.co.com/Tqg08NHV/Tour-Guide5.jpg"
   },
   {
-    "id": 3,
-    "name": "Srimangal",
-    "description": "Discover the tea capital of Bangladesh, known for its lush green hills and tea gardens.",
-    "image": "https://i.ibb.co.com/2Yysf1zs/srimangal.jpg"
+      "id":4,
+      "name": "Shakib Rahman",
+      "language": ["Bengali"],
+      "experience": "4 years",
+      "bio": "Passionate about culinary experiences.",
+      "image": "https://i.ibb.co.com/WNBbPFYD/Tour-Guide4.jpg"
   },
   {
-    "id": 4,
-    "name": "Dhaka",
-    "description": "Experience the vibrant capital city with its rich history and diverse culture.",
-    "image": "https://i.ibb.co.com/SDRNb4SM/Dhaka.jpg"
-  },
+      "id":6,
+      "name": "Rashidul Islam",
+      "language": ["Bengali","English"],
+      "experience": "8 years",
+      "bio": "Offers unique city tours in Dhaka.",
+      "image": "https://i.ibb.co.com/6JgVKCMW/Tour-Guide6.jpg"
+      },
   {
-    "id": 5,
-    "name": "Bandarban",
-    "description": "Explore the stunning hill tracts of Bandarban, known for its scenic beauty and tribal culture.",
-    "image": "https://i.ibb.co.com/C3Sp9RQq/Bandarban.jpg"
-  },
-  {
-    "id": 6,
-    "name": "Rangamati",
-    "description": "Enjoy the picturesque landscapes and tribal heritage in the heart of the Chittagong Hill Tracts.",
-    "image": "https://i.ibb.co.com/j92p8GxS/rangamati.jpg"
+      "id":2,
+      "name": "Omar Faruq",
+      "language": ["Bengali"],
+      "experience": "5 years",
+      "bio": "Focuses on heritage and cultural education",
+      "image": "https://i.ibb.co.com/3Y7PMm7w/Tour-Guide2.jpg"
   }
 ]

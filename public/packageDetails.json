@@ -1,0 +1,42 @@
+{
+  "id": 1,
+  "name": "Sundarbans Wildlife Adventure",
+  "duration": "4 days, 3 nights",
+  "price": 9999.99,
+  "description": "Explore the world's largest mangrove forest and witness the majestic Royal Bengal Tiger. This adventure includes guided safaris, cultural experiences, and breathtaking views of nature.",
+  "inclusions": [
+    "Round-trip boat transport",
+    "Luxury cruise stay",
+    "Guided forest safari",
+    "All meals included",
+    "Evening cultural programs",
+    "Expert wildlife guide"
+  ],
+  "destination": "Sundarbans, Bangladesh",
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Arrival & Cruise to Sundarbans"
+    },
+    {
+      "day": 2,
+      "title": "Wildlife Safari & Bird Watching"
+    },
+    {
+      "day": 3,
+      "title": "Local Village Tour & Night Safari"
+    },
+    {
+      "day": 4,
+      "title": "Return & Departure"
+    }
+  ],
+  "stockImages": [
+    "https://i.ibb.co.com/20drZp3T/Sundarban.jpg",
+    "https://i.ibb.co.com/RpCcrydy/Sundarbans2.jpg",
+    "https://i.ibb.co.com/4RNWT3M6/Sundarbans3.jpg"
+  ],
+  "image": "https://i.ibb.co.com/20drZp3T/Sundarban.jpg",
+  "tourType": "Wildlife Adventure",
+  "rating": 4.8
+}
