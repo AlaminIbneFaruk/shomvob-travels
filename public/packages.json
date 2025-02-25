@@ -3,65 +3,228 @@
     {
       "id": 1,
       "name": "Sundarbans Wildlife Adventure",
-      "duration": "4 days",
+      "duration": "4 days, 3 nights",
       "price": 9999.99,
-      "description": "Explore the world's largest mangrove forest and witness the majestic Royal Bengal Tiger.",
+      "description": "Explore the world's largest mangrove forest and witness the majestic Royal Bengal Tiger. This adventure includes guided safaris, cultural experiences, and breathtaking views of nature.",
       "inclusions": [
         "Round-trip boat transport",
         "Luxury cruise stay",
         "Guided forest safari",
-        "All meals included"
+        "All meals included",
+        "Evening cultural programs",
+        "Expert wildlife guide"
       ],
-      "destination": "Sundarbans",
-      "highlights": [
-        "Wildlife spotting (Royal Bengal Tiger, deer, crocodiles)",
-        "Mangrove forest boat tour",
-        "Visit to local fishing villages"
+      "destination": "Sundarbans, Bangladesh",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Cruise to Sundarbans"
+        },
+        {
+          "day": 2,
+          "title": "Wildlife Safari & Bird Watching"
+        },
+        {
+          "day": 3,
+          "title": "Local Village Tour & Night Safari"
+        },
+        {
+          "day": 4,
+          "title": "Return & Departure"
+        }
       ],
-      "image": "https://i.ibb.co.com/20drZp3T/Sundarban.jpg",
-      "tourType": "Wildlife Adventure"
+      "stockImages": [
+        "https://i.ibb.co/20drZp3T/Sundarban.jpg",
+        "https://i.ibb.co/RpCcrydy/Sundarbans2.jpg",
+        "https://i.ibb.co/4RNWT3M6/Sundarbans3.jpg"
+      ],
+      "image": "https://i.ibb.co/20drZp3T/Sundarban.jpg",
+      "tourType": "Wildlife Adventure",
+      "rating": 4.8
     },
     {
       "id": 2,
       "name": "Cox’s Bazar Beach Retreat",
-      "duration": "3 days",
+      "duration": "3 days, 2 nights",
       "price": 7999.99,
-      "description": "Relax on the longest natural sea beach in the world with luxury accommodations and thrilling activities.",
+      "description": "Relax on the longest natural sea beach in the world with luxury accommodations and thrilling activities. Enjoy beach sports and sightseeing.",
       "inclusions": [
         "Round-trip airfare from Dhaka",
         "5-star beachfront hotel stay",
         "Daily buffet breakfast",
         "Beach activities & sightseeing tour"
       ],
-      "destination": "Cox’s Bazar",
-      "highlights": [
-        "Sunset views at Inani Beach",
-        "Speedboat ride to Saint Martin’s Island",
-        "Explore Himchari Waterfall & Marine Drive"
+      "destination": "Cox’s Bazar, Bangladesh",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Beach Relaxation"
+        },
+        {
+          "day": 2,
+          "title": "Beach Activities & Sightseeing"
+        },
+        {
+          "day": 3,
+          "title": "Sunset Views & Departure"
+        }
       ],
-      "image": "https://i.ibb.co.com/9HbhrLh1/coxsbazar.jpg",
-      "tourType": "Beach Retreat"
+      "stockImages": [
+        "https://i.ibb.co/9HbhrLh1/coxsbazar.jpg",
+        "https://i.ibb.co/4mJ8jYX/coxsbazar2.jpg",
+        "https://i.ibb.co/4g3bjt6/coxsbazar3.jpg"
+      ],
+      "image": "https://i.ibb.co/9HbhrLh1/coxsbazar.jpg",
+      "tourType": "Beach Retreat",
+      "rating": 4.7
     },
     {
       "id": 3,
       "name": "Sylhet Tea Garden Escape",
-      "duration": "3 days",
+      "duration": "3 days, 2 nights",
       "price": 6999.99,
-      "description": "Immerse yourself in the serene beauty of Sylhet’s lush green tea gardens and waterfalls.",
+      "description": "Immerse yourself in the serene beauty of Sylhet’s lush green tea gardens and waterfalls. Enjoy tea tasting and local cultural experiences.",
       "inclusions": [
         "Round-trip AC transport",
         "Resort stay in tea estate",
         "Tea plantation tour & tasting",
         "Excursion to Jaflong & Ratargul Swamp Forest"
       ],
-      "destination": "Sylhet",
-      "highlights": [
-        "Explore the breathtaking Jaflong hills",
-        "Boat ride through Ratargul Swamp Forest",
-        "Experience authentic tea culture"
+      "destination": "Sylhet, Bangladesh",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Tea Garden Tour"
+        },
+        {
+          "day": 2,
+          "title": "Jaflong & Ratargul Swamp Forest Excursion"
+        },
+        {
+          "day": 3,
+          "title": "Local Cultural Experiences & Departure"
+        }
       ],
-      "image": "https://i.ibb.co.com/jkcNySw2/syhlet.jpg",
-      "tourType": "Cultural Experience"
+      "stockImages": [
+        "https://i.ibb.co/jkcNySw2/syhlet.jpg",
+        "https://i.ibb.co/Z1gDMSj/syhlet2.jpg",
+        "https://i.ibb.co/8z5cDfz/syhlet3.jpg"
+      ],
+      "image": "https://i.ibb.co/jkcNySw2/syhlet.jpg",
+      "tourType": "Cultural Experience",
+      "rating": 4.6
+    },
+    {
+      "id": 4,
+      "name": "Sreemangal Tea Estate Retreat",
+      "duration": "3 days, 2 nights",
+      "price": 7499.99,
+      "description": "Discover the tranquil tea gardens of Sreemangal, the tea capital of Bangladesh. Experience tea tasting, local wildlife, and the lush green hills.",
+      "inclusions": [
+        "Round-trip AC transport",
+        "Tea estate cottage stay",
+        "Tea plantation tour & tasting",
+        "Visit to Lawachara National Park"
+      ],
+      "destination": "Sreemangal, Bangladesh",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Tea Garden Exploration"
+        },
+        {
+          "day": 2,
+          "title": "Lawachara National Park Tour"
+        },
+        {
+          "day": 3,
+          "title": "Tea Tasting & Departure"
+        }
+      ],
+      "stockImages": [
+        "https://i.ibb.co.com/2Yysf1zs/srimangal.jpg",
+        "https://i.ibb.co/2M2MZsh/sreemangal2.jpg",
+        "https://i.ibb.co/3kD9pqm/sreemangal3.jpg"
+      ],
+      "image": "https://i.ibb.co.com/2Yysf1zs/srimangal.jpg",
+      "tourType": "Cultural Experience",
+      "rating": 4.7
+    },
+    {
+      "id": 5,
+      "name": "Bandarban Hill Trekking",
+      "duration": "4 days, 3 nights",
+      "price": 8499.99,
+      "description": "Embark on an unforgettable trekking adventure through the stunning hills of Bandarban, exploring remote villages and breathtaking landscapes.",
+      "inclusions": [
+        "Round-trip transport from Dhaka",
+        "Trekking guide",
+        "Accommodation in local guesthouses",
+        "All meals included during the trek"
+      ],
+      "destination": "Bandarban, Bangladesh",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Local Village Tour"
+        },
+        {
+          "day": 2,
+          "title": "Trekking to Ruma & Boga Lake"
+        },
+        {
+          "day": 3,
+          "title": "Exploring Tribal Culture"
+        },
+        {
+          "day": 4,
+          "title": "Return Journey & Departure"
+        }
+      ],
+      "stockImages": [
+        "https://i.ibb.co/F5FJHfT/bandarban.jpg",
+        "https://i.ibb.co/8DPLRKK/bandarban2.jpg",
+        "https://i.ibb.co/tQzNNXX/bandarban3.jpg"
+      ],
+      "image": "https://i.ibb.co.com/C3Sp9RQq/Bandarban.jpg",
+      "tourType": "Adventure Trekking",
+      "rating": 4.9
+    },
+    {
+      "id": 6,
+      "name": "Rangamati Tribal Culture Tour",
+      "duration": "3 days, 2 nights",
+      "price": 7999.99,
+      "description": "Experience the rich tribal culture of Rangamati, known for its picturesque landscapes and indigenous communities. Enjoy boat rides and local crafts.",
+      "inclusions": [
+        "Round-trip transport from Dhaka",
+        "Accommodation in a local resort",
+        "Boat ride on Kaptai Lake",
+        "Visit to local markets and cultural sites"
+      ],
+      "destination": "Rangamati, Bangladesh",
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Kaptai Lake Tour"
+        },
+        {
+          "day": 2,
+          "title": "Exploring Tribal Villages & Markets"
+        },
+        {
+          "day": 3,
+          "title": "Local Craft Workshop & Departure"
+        }
+      ],
+      "stockImages": [
+        "https://i.ibb.co/yq9G0tx/rangamati.jpg",
+        "https://i.ibb.co/m0Wnx5K/rangamati2.jpg",
+        "https://i.ibb.co/3CLJ5rX/rangamati3.jpg"
+      ],
+      "image": "https://i.ibb.co.com/j92p8GxS/rangamati.jpg",
+      "tourType": "Cultural Experience",
+      "rating": 4.8
     }
   ]
 }

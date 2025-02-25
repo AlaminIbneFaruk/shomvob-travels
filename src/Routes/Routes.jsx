@@ -12,8 +12,12 @@ import Trip from "../Pages/Trip/Trip.jsx";
 import Package from "../Pages/Package/Package.jsx";
 import About from "../Pages/About/About.jsx";
 import Community from "../Pages/Community/Community.jsx";
-import DashboardLayout from "../Components/Dashboard.jsx";
-
+import ManageProfile from "../Pages/ManageProfile/ManageProfile.jsx";
+import Tourist from "../Pages/Tourist/Tourist.jsx";
+import Dashboard from "../Layout/Dashboard.jsx";
+import Bookings from"../Pages/MyBookings/Bookings.jsx";
+import AddStories from"../Pages/AddStories/AddStories.jsx";
+import ManageStories from"../Pages/ManageStories/ManageStories.jsx";
 const Routes = createBrowserRouter([
   {
     path: "/",
@@ -25,67 +29,84 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/package-details",
-        element: <Package></Package>,
-        errorElement: (
-          <>
-            <ErrorF2F></ErrorF2F>
-          </>
-        ),
+        element: <Package />,
+        errorElement: <ErrorF2F />,
       },
       {
         path: "/about",
-        element: <About></About>,
-        errorElement: (
-          <>
-            <ErrorF2F></ErrorF2F>
-          </>
-        ),
+        element: <About />,
+        errorElement: <ErrorF2F />,
       },
       {
         path: "/packagedetails/:id",
         element: (
           <>
-            <Hero></Hero>
+            <Hero />
             packagedetails
           </>
         ),
       },
       {
-        path: "/userdashboard/:userid",
+        path: "/dashboard/:userid",
         element: (
           <PrivateRoutes>
-            <DashboardLayout/>
+            <Dashboard />
           </PrivateRoutes>
         ),
-      },
-      {
-        path: "/tourguidedashboard/:userid",
-        element: (
-          <PrivateRoutes>
-            <>
-              <Hero></Hero>
-              tourguidedashboard
-            </>
-          </PrivateRoutes>
-        ),
-      },
-      {
-        path: "/admindashboard",
-        element: (
-          <PrivateRoutes>
-            <>
-              <Hero></Hero>
-              admindashboard
-            </>
-          </PrivateRoutes>
-        ),
+        children: [
+          {
+            path: "", 
+            element: (
+              <>
+                <Tourist/>
+              </>
+            ),
+            children:[
+              { 
+                path:"manage-profiles/:userid",
+                element:<ManageProfile/>
+              },
+              { 
+                path:"my-bookings/:userid",
+                element:<Bookings/>
+              },
+              { 
+                path:"add-stories/:userid",
+                element:<AddStories/>
+              }
+              ,
+              { 
+                path:"manage-stories/:userid",
+                element:<ManageStories/>
+              }
+            ]
+          },
+          {
+            path: "tourguide/:tourguideid",
+            element: (
+              <>
+                <Hero />
+                tourguidedashboard
+              </>
+            ),
+          },
+          {
+            path: "admin/:adminid", 
+            element: (
+              <>
+                <Hero />
+                admindashboard
+              </>
+            ),
+          },
+        ],
       },
       {
         path: "/bookings/:id",
         element: (
           <PrivateRoutes>
             <>
-              <Hero></Hero>
+              <Hero />
               bookings
             </>
           </PrivateRoutes>
@@ -97,9 +118,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/community",
-        element: (
-          <Community/>
-        ),
+        element: <Community />,
       },
       {
         path: "/register",
@@ -107,7 +126,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/trips",
-        element: <Trip/>,
+        element: <Trip />,
       },
     ],
   },

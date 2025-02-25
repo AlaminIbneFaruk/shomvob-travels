@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "bk001",
+    "packageName": "Sundarbans Adventure",
+    "tourGuideName": "Rashidul Islam",
+    "tourDate": "2025-03-15",
+    "price": 9999.99,
+    "status": "Pending"
+  },
+  {
+    "_id": "bk002",
+    "packageName": "Cox's Bazar Beach Trip",
+    "tourGuideName": "Shakib Hasan",
+    "tourDate": "2025-06-05",
+    "price": 7999.99,
+    "status": "In Review"
+  },
+  {
+    "_id": "bk003",
+    "packageName": "Sreemangal Tea Garden Tour",
+    "tourGuideName": "Shakib Hasan",
+    "tourDate": "2025-03-20",
+    "price": 7499.99,
+    "status": "Accepted"
+  },
+  {
+    "_id": "bk004",
+    "packageName": "Bandarban Hill Trekking",
+    "tourGuideName": "Omar Faruq",
+    "tourDate": "2025-05-10",
+    "price": 8499.99,
+    "status": "Rejected"
+  },
+  {
+    "_id": "bk005",
+    "packageName": "Rangamati Tribal Culture Tour",
+    "tourGuideName": "Akib Rahman",
+    "tourDate": "2025-06-01",
+    "price": 130.99,
+    "status": "Pending"
+  }
+]

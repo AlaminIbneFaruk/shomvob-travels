@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { Home, Users, BarChart, Settings, Menu, ArrowBigLeft } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
-
+import { FaUserCircle, FaClipboardList, FaBook, FaPlusCircle, FaRegHandPointRight, FaArrowCircleLeft } from 'react-icons/fa';
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const location = useLocation();
@@ -11,20 +11,20 @@ const Dashboard = () => {
   const DashboardTheme = {
     title: "Dashboard",
     sidebarItems: [
-      { icon: <Home />, label: "Dashboard", path: `/userdashboard/${user?.uid}` },
-      { icon: <Users />, label: "Users", path: "/users" },
-      { icon: <BarChart />, label: "Analytics", path: "/analytics" },
-      { icon: <Settings />, label: "Settings", path: "/settings" },
-      { icon: <ArrowBigLeft />, label: "Back", path: "/" }
+      { icon: <FaUserCircle />, label: "Manage Profile", path: `manage-profiles/${user?.uid}` },
+      { icon: <FaClipboardList />, label: "My Bookings", path: `my-bookings/${user?.uid}` },
+      { icon: <FaBook />, label: "Manage Stories", path: `manage-stories/${user?.uid}` },
+      { icon: <FaPlusCircle />, label: "Add Stories", path: `add-stories/${user?.uid}` },
+      { icon: <FaRegHandPointRight />, label: "Join as Tour Guide", path: `tour-guide-application/${user?.uid}` },
+      { icon: <FaArrowCircleLeft/>, label: "Home", path: "/" },
     ]
   };
 
-  // Fixing the isActive function
   const isActive = (path) =>
     location.pathname === path ? "font-bold underline text-black" : "text-white";
 
   return (
-    <div className="flex h-screen bg-sky-200 flex-col md:flex-row">
+    <div className="flex bg-sky-200 flex-col md:flex-row">
       {/* Sidebar */}
       <aside
         className={`bg-sky-400 text-white p-4 shadow-lg transition-all duration-300 ${
