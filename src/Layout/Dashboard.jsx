@@ -11,11 +11,11 @@ const Dashboard = () => {
   const DashboardTheme = {
     title: "Dashboard",
     sidebarItems: [
-      { icon: <FaUserCircle />, label: "Manage Profile", path: `manage-profiles/${user?.uid}` },
-      { icon: <FaClipboardList />, label: "My Bookings", path: `my-bookings/${user?.uid}` },
-      { icon: <FaBook />, label: "Manage Stories", path: `manage-stories/${user?.uid}` },
-      { icon: <FaPlusCircle />, label: "Add Stories", path: `add-stories/${user?.uid}` },
-      { icon: <FaRegHandPointRight />, label: "Join as Tour Guide", path: `tour-guide-application/${user?.uid}` },
+      { icon: <FaUserCircle />, label: "Manage Profile", path: `tourist/` },
+      { icon: <FaClipboardList />, label: "My Bookings", path: `tourist/my-bookings/${user?.uid}` },
+      { icon: <FaBook />, label: "Manage Stories", path: `tourist/manage-stories/${user?.uid}` },
+      { icon: <FaPlusCircle />, label: "Add Stories", path: `tourist/add-stories/${user?.uid}` },
+      { icon: <FaRegHandPointRight />, label: "Join as Tour Guide", path: `tourist/tour-guide-application/${user?.uid}` },
       { icon: <FaArrowCircleLeft/>, label: "Home", path: "/" },
     ]
   };

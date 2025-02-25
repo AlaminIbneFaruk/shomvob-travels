@@ -40,7 +40,7 @@ const AddStories = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-4 border rounded-lg shadow-lg">
+    <div className="max-w-lg mx-auto p-4 border rounded-lg shadow-lg bg-white">
       <h2 className="text-xl font-semibold mb-4">Add a Story</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

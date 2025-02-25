@@ -15,9 +15,16 @@ import Community from "../Pages/Community/Community.jsx";
 import ManageProfile from "../Pages/ManageProfile/ManageProfile.jsx";
 import Tourist from "../Pages/Tourist/Tourist.jsx";
 import Dashboard from "../Layout/Dashboard.jsx";
-import Bookings from"../Pages/MyBookings/Bookings.jsx";
-import AddStories from"../Pages/AddStories/AddStories.jsx";
-import ManageStories from"../Pages/ManageStories/ManageStories.jsx";
+import Bookings from "../Pages/MyBookings/Bookings.jsx";
+import AddStories from "../Pages/AddStories/AddStories.jsx";
+import ManageStories from "../Pages/ManageStories/ManageStories.jsx";
+import TourGuideApplication from "../Pages/TourGuideApplication/TourGuideApplication.jsx";
+import TourGuideDashboard from "../Pages/TourGuideDashboard/TourGuideDashboard.jsx";
+import ManageProfileTG from "../Pages/TourGuideDashboard/ManageProfileTG.jsx";
+import AssignedTours from "../Pages/AssignedTours/AssignedTours.jsx";
+import AdminDashboard from "../Pages/AdminDashboard/AdminDashboard.jsx";
+import ManageProfileAdmin from "../Pages/AdminDashboard/ManageProfileAdmin.jsx";
+import AddPackageForm from "../Pages/AdminDashboard/AddPackages.jsx";
 const Routes = createBrowserRouter([
   {
     path: "/",
@@ -47,7 +54,7 @@ const Routes = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/:userid",
+        path: "/dashboard/",
         element: (
           <PrivateRoutes>
             <Dashboard />
@@ -55,51 +62,69 @@ const Routes = createBrowserRouter([
         ),
         children: [
           {
-            path: "", 
-            element: (
-              <>
-                <Tourist/>
-              </>
-            ),
-            children:[
-              { 
-                path:"manage-profiles/:userid",
-                element:<ManageProfile/>
+            path: "tourist/",
+            element: <Tourist />,
+            children: [
+              {
+                path: "",
+                element: <ManageProfile />,
               },
-              { 
-                path:"my-bookings/:userid",
-                element:<Bookings/>
+              {
+                path: "my-bookings/:userid",
+                element: <Bookings />,
               },
-              { 
-                path:"add-stories/:userid",
-                element:<AddStories/>
-              }
-              ,
-              { 
-                path:"manage-stories/:userid",
-                element:<ManageStories/>
-              }
-            ]
-          },
-          {
-            path: "tourguide/:tourguideid",
-            element: (
-              <>
-                <Hero />
-                tourguidedashboard
-              </>
-            ),
-          },
-          {
-            path: "admin/:adminid", 
-            element: (
-              <>
-                <Hero />
-                admindashboard
-              </>
-            ),
+              {
+                path: "add-stories/:userid",
+                element: <AddStories />,
+              },
+              {
+                path: "manage-stories/:userid",
+                element: <ManageStories />,
+              },
+              {
+                path: "tour-guide-application/:userid",
+                element: <TourGuideApplication />,
+              },
+            ],
           },
         ],
+      },
+      {
+        path: "tourguidedashboard/",
+        element: <TourGuideDashboard />,
+        children: [
+          {
+            path: "",
+            element: <ManageProfileTG />,
+          },
+          {
+            path: "assignedtours",
+            element: <AssignedTours />,
+          },
+          {
+            path: "add-stories",
+            element: <AddStories />,
+          },              {
+                path: "manage-stories/:userid",
+                element: <ManageStories />,
+              },
+        ],
+      },
+      {
+        path: "admin",
+        element: (
+          <AdminDashboard></AdminDashboard>
+        ),
+        children:[
+          {
+            path: "",
+            element: <ManageProfileAdmin />,
+          },
+          {
+            path: "add-package",
+            element: <AddPackageForm />,
+          },
+        ]
       },
       {
         path: "/bookings/:id",

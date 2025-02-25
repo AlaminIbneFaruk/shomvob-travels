@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "1",
+    "packageName": "Rangamati Tribal Culture Tour",
+    "touristName": "John Doe",
+    "tourDate": "2025-03-15",
+    "price": 7500,
+    "status": "In Review"
+  },
+  {
+    "_id": "2",
+    "packageName": "Bandarban Hill Trekking",
+    "touristName": "Jane Smith",
+    "tourDate": "2025-04-10",
+    "price": 8200,
+    "status": "Pending"
+  },
+  {
+    "_id": "3",
+    "packageName": "Sreemangal Tea Estate Retreat",
+    "touristName": "Michael Johnson",
+    "tourDate": "2025-05-20",
+    "price": 6800,
+    "status": "Accepted"
+  },
+  {
+    "_id": "4",
+    "packageName": "Sylhet Tea Garden Escape",
+    "touristName": "Emily Davis",
+    "tourDate": "2025-06-05",
+    "price": 7200,
+    "status": "Rejected"
+  },
+  {
+    "_id": "5",
+    "packageName": "Cox’s Bazar Beach Retreat",
+    "touristName": "David Miller",
+    "tourDate": "2025-07-12",
+    "price": 9000,
+    "status": "In Review"
+  },
+  {
+    "_id": "6",
+    "packageName": "Sundarbans Wildlife Adventure",
+    "touristName": "Sophia Wilson",
+    "tourDate": "2025-08-22",
+    "price": 9900,
+    "status": "Pending"
+  }
+]
