@@ -16,7 +16,11 @@ const destinations = [
 
 const InteractiveMap = () => {
   return (
-    <MapContainer
+    <div className="bg-sky-200">
+      <div className="text-2xl lg:text-3xl font-semibold mb-4 text-center">
+        <h2>Interactive Map of Bangladesh: Must-Visit Spots</h2>
+      </div>
+      <MapContainer
       center={[23.685, 90.3563]} // Center of Bangladesh
       zoom={7} // Increased zoom to focus on Bangladesh
       style={{ height: "500px", width: "100%" }}
@@ -30,6 +34,7 @@ const InteractiveMap = () => {
         </Marker>
       ))}
     </MapContainer>
+    </div>
   );
 };
 

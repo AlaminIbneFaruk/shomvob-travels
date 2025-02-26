@@ -6,6 +6,7 @@ import Multimedia from "./Multimedia.jsx";
 import CustomTabs from "./CustomTabs.jsx";
 import UserStories from "../../Components/UserStories";
 import InteractiveMap from "./InteractiveMap.jsx";
+import TravelSafety from "./TravelSafety.jsx";
 const Home = () => {
   return (
     <>
@@ -23,6 +24,7 @@ const Home = () => {
       <Multimedia></Multimedia>
       <CustomTabs></CustomTabs>
       <UserStories></UserStories>
+      <TravelSafety/>
       <InteractiveMap/>
     </>
 );
