@@ -1,5 +1,5 @@
 import Hero from "../../Components/Hero";
-import UserStories from "../../Components/UserStories";
+import UserStories2 from "../../Components/UserStories2.jsx";
 
 const Community = () => {
   return (
@@ -11,7 +11,7 @@ const Community = () => {
           "Join our vibrant community of travel enthusiasts where you can share your adventures, seek advice, and connect with fellow explorers. Discover new destinations, share tips, and create unforgettable memories together!"
         } 
       />
-      <UserStories/>
+      <UserStories2/>
     </div>
   );
 };
