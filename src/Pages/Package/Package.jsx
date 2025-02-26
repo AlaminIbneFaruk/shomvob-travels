@@ -16,7 +16,7 @@ const Package = () => {
         console.error("Error fetching package data:", error);
         setLoading(false);
       });
-  }, []);
+  }, [id]);
 
   if (loading) {
     return (

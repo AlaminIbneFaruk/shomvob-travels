@@ -11,7 +11,7 @@ const TravelGuide = () => {
   useEffect(() => {
     const fetchTourGuides = async () => {
       try {
-        const res = await fetch("/tourguides.json");
+        const res = await fetch("http://localhost:5000/tour-guide");
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }
@@ -58,7 +58,7 @@ const TravelGuide = () => {
                 <p className="text-gray-600 text-sm">Experience: {guide.experience}</p>
                 <button
                   className="btn btn-outline  border border-b-4 btn-info mt-2 w-full"
-                  onClick={() => navigate(`/guide/${guide.id}`)}
+                  onClick={() => navigate(`/guide/${guide._id}`)}
                 >
                   View Details
                 </button>

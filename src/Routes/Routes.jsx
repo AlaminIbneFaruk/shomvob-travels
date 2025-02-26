@@ -16,6 +16,7 @@ import ManageProfile from "../Pages/ManageProfile/ManageProfile.jsx";
 import Tourist from "../Pages/Tourist/Tourist.jsx";
 import Dashboard from "../Layout/Dashboard.jsx";
 import Bookings from "../Pages/MyBookings/Bookings.jsx";
+import TourGuide from "../Pages/TourGuide/TourGuide.jsx";
 import AddStories from "../Pages/AddStories/AddStories.jsx";
 import ManageStories from "../Pages/ManageStories/ManageStories.jsx";
 import TourGuideApplication from "../Pages/TourGuideApplication/TourGuideApplication.jsx";
@@ -33,6 +34,10 @@ const Routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/guide/:id",
+        element: <TourGuide/>,
       },
       {
         path: "/package-details/:id",

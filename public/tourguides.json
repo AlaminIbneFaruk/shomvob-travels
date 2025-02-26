@@ -46,5 +46,13 @@
       "experience": "5 years",
       "bio": "Focuses on heritage and cultural education",
       "image": "https://i.ibb.co.com/3Y7PMm7w/Tour-Guide2.jpg"
+  },
+  {
+      "id":7,
+      "name": "Rokeya Ahsan",
+      "language": ["Bengali"],
+      "experience": "2 years",
+      "bio": "Rokeya Ahsan is a passionate and knowledgeable guide with 2 years of experience, gracefully showcasing heritage and culture with warmth and insight.",
+      "image": "https://i.postimg.cc/3w1sDmJw/Tour-Guide7.jpg"
   }
 ]
