@@ -6,7 +6,7 @@ const UserStories = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("/userStories.json")
+    fetch("http://localhost:5000/community")
       .then((response) => response.json())
       .then((data) => setReviews(data))
       .catch((error) => console.error("Error fetching reviews:", error));
@@ -55,7 +55,7 @@ const UserStories = () => {
                 <p className="text-gray-600">{review.comment}</p>
 
 
-                <div className="flex space-x-4 mt-4">
+                <div className="flex justify-between space-x-4 mt-4">
                   <FacebookShareButton
                     url={window.location.href}
                     quote={review.comment}
