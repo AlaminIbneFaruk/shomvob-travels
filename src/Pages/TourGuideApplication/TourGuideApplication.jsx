@@ -87,7 +87,7 @@ const TourGuideApplication = () => {
           <div className="modal-box">
             <h2 className="text-lg font-bold">Application Submitted Successfully!</h2>
             <div className="modal-action">
-              <button onClick={handleCloseModal} className="btn">
+              <button onClick={handleCloseModal} className="btn btn-outline  border border-b-4">
                 Close
               </button>
             </div>

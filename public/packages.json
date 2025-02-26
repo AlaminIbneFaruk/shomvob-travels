@@ -1,5 +1,4 @@
-{
-  "travelPackages": [
+ [
     {
       "id": 1,
       "name": "Sundarbans Wildlife Adventure",
@@ -227,4 +226,4 @@
       "rating": 4.8
     }
   ]
-}
+

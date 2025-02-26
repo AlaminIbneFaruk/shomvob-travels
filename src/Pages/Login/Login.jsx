@@ -97,20 +97,20 @@ const Login = () => {
             </div>
             <div className="form-control mt-2 gap-5">
               <button
-                className="btn bg-gradient-to-r from-cyan-400 to-blue-500 text-white text-lg"
+                className="btn btn-outline  border border-b-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white text-lg"
                 type="submit"
               >
                 Login
               </button>
               <Link
                 to="/register"
-                className="text-lg btn btn-warning bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
+                className="text-lg  border-b-4 btn btn-outline  border btn-info bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
               >
                 Register Now
               </Link>
             </div>
             <button
-              className="btn bg-blue-500 text-white hover:bg-blue-600"
+              className="btn btn-outline  border border-b-4 bg-blue-500 text-white hover:bg-blue-600"
               onClick={handleGoogle}
             >
               <FaGoogle className="text-2xl" />

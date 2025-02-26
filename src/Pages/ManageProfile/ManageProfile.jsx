@@ -34,10 +34,10 @@ const ManageProfile = () => {
         </div>
 
         <div className="mt-6 space-y-3">
-          <button onClick={handleEditClick} className="btn btn-primary w-full">
+          <button onClick={handleEditClick} className="btn btn-outline  border border-b-4 btn-primary w-full">
             Edit Profile
           </button>
-          <button onClick={handleApplyForTourGuide} className="btn btn-outline w-full">
+          <button onClick={handleApplyForTourGuide} className="btn btn-outline  border border-b-4 w-full">
             Apply For Tour Guide
           </button>
         </div>

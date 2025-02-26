@@ -9,12 +9,20 @@ const PlanSection = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await fetch('/packages.json'); // Ensure this path is correct
+        const response = await fetch('http://localhost:5000/package'); 
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setPackages(data.travelPackages); // Ensure your JSON structure matches this
+
+        // Ensure correct state update based on response structure
+        if (Array.isArray(data)) {
+          setPackages(data); // If API returns an array directly
+        } else if (Array.isArray(data.travelPackages)) {
+          setPackages(data.travelPackages); // If wrapped inside travelPackages key
+        } else {
+          throw new Error('Invalid data format received');
+        }
       } catch (error) {
         setError(error.message);
       } finally {
@@ -34,13 +42,11 @@ const PlanSection = () => {
   }
 
   return (
-    <div className=" mx-auto p-6 bg-sky-200">
+    <div className="mx-auto p-6 bg-sky-200">
       <h2 className="text-2xl font-bold text-center mb-6">Travel Packages</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {packages.map((packageplan) => (
-          
-            <PackagePlan packageplan={packageplan} key={packageplan.id} />
-          
+          <PackagePlan packageplan={packageplan} key={packageplan._id || packageplan.id} />
         ))}
       </div>
     </div>

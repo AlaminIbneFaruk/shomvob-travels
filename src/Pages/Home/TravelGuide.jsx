@@ -57,7 +57,7 @@ const TravelGuide = () => {
                 <p className="text-gray-600 text-sm">Languages: {guide.language.join(", ")}</p>
                 <p className="text-gray-600 text-sm">Experience: {guide.experience}</p>
                 <button
-                  className="btn btn-info mt-2 w-full"
+                  className="btn btn-outline  border border-b-4 btn-info mt-2 w-full"
                   onClick={() => navigate(`/guide/${guide.id}`)}
                 >
                   View Details

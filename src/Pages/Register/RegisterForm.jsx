@@ -158,13 +158,13 @@ const RegisterForm = () => {
           <div className="form-control mt-2 gap-5">
             <button
               type="submit"
-              className="btn btn-warning bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
+              className="btn btn-outline  border border-b-4 btn-warning bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
             >
               Register
             </button>
             <Link
               to="/login"
-              className="btn btn-warning bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
+              className="btn btn-outline  border border-b-4 btn-warning bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
             >
               Already have an account? Login
             </Link>

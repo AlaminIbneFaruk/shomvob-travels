@@ -33,7 +33,7 @@ const Dashboard = () => {
       >
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="btn btn-ghost mb-4"
+          className="btn btn-outline  border border-b-4 btn-ghost mb-4"
         >
           <Menu className="text-white" />
         </button>

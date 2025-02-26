@@ -40,7 +40,7 @@ const PackagePlan = ({ packageplan }) => {
         group-hover:bg-blue-700 group-hover:text-white"
       >
         <button
-          className="mt-5 w-full bg-blue-600 text-white font-semibold py-2 rounded-lg transition duration-300 
+          className="btn btn-outline border-b-4 mt-5 w-full bg-blue-600 text-white font-semibold py-2 rounded-lg transition duration-300 
           hover:bg-white hover:text-blue-600 hover:border-blue-600 border"
           onClick={handleViewMore} // Added onClick handler
         >

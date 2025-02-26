@@ -86,7 +86,7 @@ const ManageProfileAdmin = () => {
         )}
 
         <div className="mt-6">
-          <button onClick={handleEditClick} className="btn btn-primary w-full">
+          <button onClick={handleEditClick} className="btn bg-blue-500 w-full btn-outline  border border-b-4">
             Edit Profile
           </button>
         </div>

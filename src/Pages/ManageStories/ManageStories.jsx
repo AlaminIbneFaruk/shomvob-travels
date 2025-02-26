@@ -54,8 +54,8 @@ const ManageStories = () => {
                 <p className="text-sm text-gray-600">Rating: {story.rating}</p>
                 <p className="text-gray-800">{story.comment}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Edit</button>
-                  <button className="btn btn-error">Delete</button>
+                  <button className="btn btn-outline  border border-b-4 btn-primary">Edit</button>
+                  <button className="btn btn-outline  border border-b-4 btn-error">Delete</button>
                 </div>
               </div>
             </div>

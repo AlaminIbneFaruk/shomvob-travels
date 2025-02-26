@@ -129,7 +129,7 @@ const AddPackages = () => {
             className="input input-bordered w-full"
           />
         </div>
-        <button type="submit" className="btn btn-primary w-full mt-4">
+        <button type="submit" className="btn btn-outline  border border-b-4 bg-blue-500 w-full mt-4">
           Add Package
         </button>
       </form>

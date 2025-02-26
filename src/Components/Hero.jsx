@@ -9,7 +9,7 @@ const Hero = ({ title, description, image, buttonText, motionEffect }) => {
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">{title}</h1>
         <p className="py-4 text-sm sm:text-md md:text-lg">{description}</p>
         {buttonText && (
-          <button className="btn bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-6 py-2 rounded-lg mt-4 hover:scale-105 transition-transform">
+          <button className="btn btn-outline  border border-b-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white px-6 py-2 rounded-lg mt-4 hover:scale-105 transition-transform">
             {buttonText}
           </button>
         )}
