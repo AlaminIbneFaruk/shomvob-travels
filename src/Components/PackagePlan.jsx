@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
 const PackagePlan = ({ packageplan }) => {
   const {
+    _id,
     name,
     price,
     image,
@@ -10,7 +11,7 @@ const PackagePlan = ({ packageplan }) => {
   const navigate = useNavigate();
   const handleViewMore = () => {
     // Logic for booking, e.g., redirecting to a booking page
-    navigate("/package-details");
+    navigate(`/package-details/${_id}`);
   };
 
   return (
@@ -53,6 +54,7 @@ const PackagePlan = ({ packageplan }) => {
 
 PackagePlan.propTypes = {
   packageplan: PropTypes.shape({
+    _id:PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     duration: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

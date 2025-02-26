@@ -25,7 +25,7 @@ const Multimedia = () => {
         <p className="text-xl max-w-2xl mb-6">From bucket list to booked.</p>
         {/* Call to Action Button using Link */}
         <Link 
-          to="/booking" 
+          to="/trips" 
           className="btn btn-outline  border border-b-4 mt-4 px-6 py-2 bg-sky-500 text- font-semibold rounded-lg shadow-lg transition duration-300 hover:bg-yellow-400"
         >
           Book Your Adventure

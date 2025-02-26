@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import Gallery from "../../Components/Gallery";
-
+import { useParams } from "react-router-dom";
 const Package = () => {
   const [packageData, setPackageData] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const { id } = useParams();
   useEffect(() => {
-    fetch("/packageDetails.json")
+    fetch(`http://localhost:5000/packages-details/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setPackageData(data);

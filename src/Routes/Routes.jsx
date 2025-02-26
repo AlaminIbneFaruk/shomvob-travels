@@ -35,7 +35,7 @@ const Routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/package-details",
+        path: "/package-details/:id",
         element: <Package />,
         errorElement: <ErrorF2F />,
       },
