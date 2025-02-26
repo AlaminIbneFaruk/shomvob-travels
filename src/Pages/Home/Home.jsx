@@ -3,7 +3,9 @@ import { Helmet } from "react-helmet";
 import Slider from "./Slider.jsx";
 import OverviewSection from "./OverviewSection.jsx";
 import Multimedia from "./Multimedia.jsx";
-import CustomTabs from "./CustomTabs.jsx"
+import CustomTabs from "./CustomTabs.jsx";
+import UserStories from "../../Components/UserStories";
+import InteractiveMap from "./InteractiveMap.jsx";
 const Home = () => {
   return (
     <>
@@ -20,6 +22,8 @@ const Home = () => {
       <OverviewSection></OverviewSection>
       <Multimedia></Multimedia>
       <CustomTabs></CustomTabs>
+      <UserStories></UserStories>
+      <InteractiveMap/>
     </>
 );
 };
