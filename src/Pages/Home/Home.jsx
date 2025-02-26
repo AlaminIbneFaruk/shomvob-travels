@@ -11,12 +11,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <link
-          rel="icon"
-          type="image/svg+xml"
-          href=""
-        />
-        <title>Home | Sompurno Travels</title>
+        <title>Home | Shomvob Travels</title>
       </Helmet>
 
       <Slider></Slider>

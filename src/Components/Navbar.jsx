@@ -37,6 +37,11 @@ const Navbar = () => {
   if (isTourGuideDashboardPath) return null;
   if (isAdminDashboardPath) return null;
 
+  const handleLogout = () => {
+    signOutUser();
+    localStorage.removeItem("token"); // Remove JWT from local storage
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-sky-400 shadow-md p-4 flex justify-between items-center z-50">
       <Link to="/" className="btn btn-ghost py-2 font-extrabold text-lg lg:text-3xl">
@@ -87,10 +92,7 @@ const Navbar = () => {
                   Offers
                 </Link>
                 <button
-                  onClick={() => {
-                    signOutUser();
-                    setDropdownOpen(false);
-                  }}
+                  onClick={handleLogout}
                   className="w-full text-left text-red-600 hover:bg-red-100 px-2 py-1 rounded mt-2"
                 >
                   Logout
@@ -144,7 +146,7 @@ const Navbar = () => {
               </Link>
               <button
                 onClick={() => {
-                  signOutUser();
+                  handleLogout();
                   setMenuOpen(false);
                 }}
                 className="text-red-600 py-2"

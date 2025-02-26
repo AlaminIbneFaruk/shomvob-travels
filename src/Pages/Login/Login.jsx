@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import { Helmet } from "react-helmet";
+import axios from 'axios';
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [success, setSuccess] = useState(false);
@@ -15,35 +16,49 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log("You pressed Login!");
-    console.log("Email:", email, "Password:", password);
+  
     setErrorMessage("");
     setSuccess(false);
-    // login code here
+  
     signInUser(email, password)
       .then((userCredential) => {
-        console.log("User:", userCredential.user);
+        const user = { email: userCredential.user.email };
+  
+        // Send user email to backend and store JWT in cookies
+        axios.post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .then(res => {
+            console.log("JWT Set in Cookies:", res.data);
+          })
+          .catch(err => console.error("JWT Error:", err));
+  
         setSuccess(true);
         e.target.reset();
         navigate("/");
       })
       .catch((error) => {
-        console.log("Error:", error.code);
-        console.log("Error:", error.message);
-        setErrorMessage(`Error:${error.message}`);
+        setErrorMessage(`Error: ${error.message}`);
       });
   };
+  
 
-  const handleGoogle = () => {
+  const handleGoogle = (e) => {
+    e.preventDefault();
     signInGoogle()
       .then((result) => {
-        console.log(result.user);
-        // navigate('/')
+        const user = { email: result.user.email };
+  
+        axios.post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .then(res => {
+            console.log("Google JWT Set in Cookies:", res.data);
+            navigate("/");
+          })
+          .catch(err => console.error("Google JWT Error:", err));
       })
       .catch((error) => {
-        console.log(error.message);
+        setErrorMessage(`Error: ${error.message}`);
       });
   };
+  
 
   const handleReset=()=>{
     resetPassword()
@@ -104,7 +119,7 @@ const Login = () => {
               </button>
               <Link
                 to="/register"
-                className="text-lg  border-b-4 btn btn-outline  border btn-info bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
+                className="text-lg  border-b-4 btn btn-outline border bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
               >
                 Register Now
               </Link>

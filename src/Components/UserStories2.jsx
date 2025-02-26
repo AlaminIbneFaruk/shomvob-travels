@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
+import axios from "axios"; // Import Axios
 
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  LinkedinShareButton,
-} from "react-share";
+import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from "react-share";
 import { FaTwitter, FaFacebook, FaLinkedin } from "react-icons/fa";
 
 const UserStories = () => {
@@ -12,9 +9,12 @@ const UserStories = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/community-tab")
-      .then((response) => response.json())
-      .then((data) => setReviews(data))
+    axios
+      .get("http://localhost:5000/community-tab")
+      .then((response) => {
+        console.log("Fetched Data:", response.data); // Debugging step
+        setReviews(Array.isArray(response.data) ? response.data : []);
+      })
       .catch((error) => console.error("Error fetching reviews:", error))
       .finally(() => setLoading(false));
   }, []);
@@ -34,10 +34,7 @@ const UserStories = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
           {reviews.map((review) => (
-            <div
-              key={review.id}
-              className="card bg-base-100 shadow-xl border p-4"
-            >
+            <div key={review.id} className="card bg-base-100 shadow-xl border p-4">
               <div className="card-body justify-center text-center">
                 <img
                   src={review.image || "https://placehold.co/600x400"}
@@ -51,9 +48,7 @@ const UserStories = () => {
                     <input
                       key={i}
                       type="radio"
-                      className={`mask mask-star-2 ${
-                        i < review.rating ? "bg-yellow-500" : "bg-gray-300"
-                      }`}
+                      className={`mask mask-star-2 ${i < review.rating ? "bg-yellow-500" : "bg-gray-300"}`}
                       disabled
                     />
                   ))}
@@ -61,26 +56,17 @@ const UserStories = () => {
 
                 <p className="text-gray-600">{review.comment}</p>
 
-                {/* Social Share Buttons - Centered and Fixed */}
+                {/* Social Share Buttons */}
                 <div className="flex justify-center gap-4 mt-4">
-                  <FacebookShareButton
-                    url={window.location.href}
-                    quote={review.comment}
-                  >
+                  <FacebookShareButton url={window.location.href} quote={review.comment}>
                     <FaFacebook className="text-3xl text-blue-600 cursor-pointer hover:scale-110 transition" />
                   </FacebookShareButton>
 
-                  <TwitterShareButton
-                    url={window.location.href}
-                    title={review.comment}
-                  >
+                  <TwitterShareButton url={window.location.href} title={review.comment}>
                     <FaTwitter className="text-3xl text-blue-400 cursor-pointer hover:scale-110 transition" />
                   </TwitterShareButton>
 
-                  <LinkedinShareButton
-                    url={window.location.href}
-                    title={review.comment}
-                  >
+                  <LinkedinShareButton url={window.location.href} title={review.comment}>
                     <FaLinkedin className="text-3xl text-blue-700 cursor-pointer hover:scale-110 transition" />
                   </LinkedinShareButton>
                 </div>

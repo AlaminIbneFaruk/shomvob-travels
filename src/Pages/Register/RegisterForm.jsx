@@ -17,7 +17,7 @@ const RegisterForm = () => {
     const name = event.target.name.value;
     const password = event.target.password.value;
     const cpassword = event.target.Cpassword.value;
-    const photoURL = event.target.photoURL.value; // Taking URL as input
+    const photoURL = event.target.photoURL.value;
     const terms = event.target.terms.checked;
 
     if (!terms) {
@@ -43,17 +43,19 @@ const RegisterForm = () => {
     }
 
     try {
-      const userCredential = await createUser(e_mail, password);
-      const user = userCredential.user;
-
+      // Call createUser which should return user and token
+      const { user, token } = await createUser(e_mail, password);
       await updateProfile(user, {
         displayName: name,
-        photoURL: photoURL, // Setting profile picture from URL input
+        photoURL: photoURL,
       });
+
+      // Store the JWT token in local storage
+      localStorage.setItem("token", token);
 
       console.log("Profile updated successfully", user);
       setSuccess(true);
-      navigate("/");
+      navigate("/"); // Redirect after successful registration
     } catch (error) {
       console.log("Error:", error.message);
       setErrorMessage(error.message);
@@ -158,13 +160,13 @@ const RegisterForm = () => {
           <div className="form-control mt-2 gap-5">
             <button
               type="submit"
-              className="btn btn-outline  border border-b-4 btn-warning bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
+              className="btn btn-outline border border-b-4 btn-warning bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
             >
               Register
             </button>
             <Link
               to="/login"
-              className="btn btn-outline  border border-b-4 btn-warning bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
+              className="btn btn-outline border border-b-4 btn-warning bg-gradient-to-r from-cyan-400 to-blue-500 text-white"
             >
               Already have an account? Login
             </Link>
