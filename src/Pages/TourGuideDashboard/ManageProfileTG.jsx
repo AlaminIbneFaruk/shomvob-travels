@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import EditProfileModal from '../EditProfileModal/EditProfileModal';
+import EditProfileModal from '../EditProfileModal';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const ManageProfileTG = () => {

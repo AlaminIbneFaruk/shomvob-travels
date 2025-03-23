@@ -10,7 +10,7 @@ const UserStories = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/community-tab")
+      .get("https://localhost:8000/community-tab")
       .then((response) => {
         console.log("Fetched Data:", response.data); // Debugging step
         setReviews(Array.isArray(response.data) ? response.data : []);

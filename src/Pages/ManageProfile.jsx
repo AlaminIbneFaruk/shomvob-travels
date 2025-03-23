@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import EditProfileModal from '../EditProfileModal/EditProfileModal';
-import { AuthContext } from '../../Contexts/AuthProvider';
+import EditProfileModal from './EditProfileModal';
+import { AuthContext } from '../Contexts/AuthProvider';
 
 const ManageProfile = () => {
   const { user } = useContext(AuthContext);

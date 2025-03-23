@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Gallery from "../../Components/Gallery";
+import Gallery from "../Components/Gallery";
 import { useParams } from "react-router-dom";
 const Package = () => {
   const [packageData, setPackageData] = useState(null);

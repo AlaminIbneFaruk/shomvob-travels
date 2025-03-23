@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { useContext } from "react";
-import { AuthContext } from "../../Contexts/AuthProvider";
+import { AuthContext } from "../Contexts/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import axios from 'axios';
@@ -25,9 +25,9 @@ const Login = () => {
         const user = { email: userCredential.user.email };
   
         // Send user email to backend and store JWT in cookies
-        axios.post("http://localhost:5000/jwt", user, { withCredentials: true })
-          .then(res => {
-            console.log("JWT Set in Cookies:", res.data);
+        axios.post("http://localhost:8000/jwt", user)
+          .then(data => {
+            console.log("JWT Set in Cookies:", data);
           })
           .catch(err => console.error("JWT Error:", err));
   
@@ -47,7 +47,7 @@ const Login = () => {
       .then((result) => {
         const user = { email: result.user.email };
   
-        axios.post("http://localhost:5000/jwt", user, { withCredentials: true })
+        axios.post("http://localhost:8000/jwt", user, { withCredentials: true })
           .then(res => {
             console.log("Google JWT Set in Cookies:", res.data);
             navigate("/");
@@ -69,7 +69,7 @@ const Login = () => {
         <title>Login | Shomvob Travels</title>
       </Helmet>
       <div
-        className="py-20 bg-gradient-to-r from-cyan-400  to-blue-500 text-white 
+        className="py-20 bg-gradient-to-r from-cyan-400  to-blue-500 
        flex justify-center items-center"
       >
 

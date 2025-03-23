@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PackagePlan from "../../Components/PackagePlan";
+import PackagePlan from "../Components/PackagePlan";
 
 const Trip = () => {
   const [travelPackages, setTravelPackages] = useState([]);
@@ -9,7 +9,7 @@ const Trip = () => {
   useEffect(() => {
     const fetchTravelPackages = async () => {
       try {
-        const response = await fetch("http://localhost:5000/trip");
+        const response = await fetch("https://assignment-12-server-lely8d3w9.vercel.app/trip");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

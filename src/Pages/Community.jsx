@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
-import Hero from "../../Components/Hero";
-import UserStories2 from "../../Components/UserStories2.jsx";
+import Hero from "../Components/Hero.jsx";
+import UserStories2 from "../Components/UserStories2.jsx";
 
 const Community = () => {
   return (

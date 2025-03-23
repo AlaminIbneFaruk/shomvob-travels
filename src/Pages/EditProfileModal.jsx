@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../../Contexts/AuthProvider";
+import { AuthContext } from "../Contexts/AuthProvider";
 import PropTypes from 'prop-types';
 
 

@@ -9,7 +9,7 @@ const PlanSection = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await fetch('http://localhost:5000/package'); 
+        const response = await fetch('https://localhost:9000/package'); 
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

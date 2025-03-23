@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaRegUserCircle } from "react-icons/fa";
 import { AuthContext } from "../Contexts/AuthProvider";
 
 const Navbar = () => {
@@ -11,7 +11,9 @@ const Navbar = () => {
 
   // Check if current path is inside dashboard routes
   const isDashboardPath = location.pathname.startsWith("/dashboard");
-  const isTourGuideDashboardPath = location.pathname.startsWith("/tourguidedashboard");
+  const isTourGuideDashboardPath = location.pathname.startsWith(
+    "/tourguidedashboard"
+  );
   const isAdminDashboardPath = location.pathname.startsWith("/admin");
 
   // Ref for closing dropdown on outside click
@@ -30,7 +32,9 @@ const Navbar = () => {
   }, []);
 
   const isActive = (path) =>
-    location.pathname === path ? "font-bold underline text-black" : "text-white";
+    location.pathname === path
+      ? "font-bold underline text-black"
+      : "text-white";
 
   // Prevent navbar from rendering on dashboard pages
   if (isDashboardPath) return null;
@@ -39,44 +43,67 @@ const Navbar = () => {
 
   const handleLogout = () => {
     signOutUser();
-    localStorage.removeItem("token"); // Remove JWT from local storage
+    // Remove JWT from local storage
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-sky-400 shadow-md p-4 flex justify-between items-center z-50">
-      <Link to="/" className="btn btn-ghost py-2 font-extrabold text-lg lg:text-3xl">
+    <nav className="fixed top-0 left-0 w-full bg-sky-400 shadow-md p-5 flex justify-between items-center z-50">
+      <Link
+        to="/"
+        className="btn btn-ghost font-extrabold text-lg lg:text-3xl "
+      >
+        <img
+          src="https://i.ibb.co.com/DgDYdY8J/Shomvob-travels.png"
+          alt="Shomvob travels logo"
+          className="w-auto h-10 rounded-xl object-cover"
+        />
         Shomvob Travels
       </Link>
 
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-6">
         {["/", "/community", "/about", "/trips"].map((route) => (
-          <Link key={route} to={route} className={`${isActive(route)} btn btn-outline py-2`}>
+          <Link
+            key={route}
+            to={route}
+            className={`${isActive(route)} btn btn-outline py-2`}
+          >
             {route.replace("/", "").toUpperCase() || "HOME"}
           </Link>
         ))}
 
         {!user ? (
           <>
-            <Link to="/login" className="btn btn-outline hover:underline bg-gradient-to-r from-cyan-400 to-blue-500">
+            <Link
+              to="/login"
+              className="btn btn-outline hover:underline bg-gradient-to-r from-cyan-400 to-blue-500"
+            >
               Login
             </Link>
-            <Link to="/register" className="btn btn-outline hover:underline bg-gradient-to-r from-cyan-400 to-blue-500">
+            <Link
+              to="/register"
+              className="btn btn-outline hover:underline bg-gradient-to-r from-cyan-400 to-blue-500"
+            >
               Register
             </Link>
           </>
         ) : (
           <div ref={dropdownRef} className="relative">
-            <button onClick={() => setDropdownOpen(!dropdownOpen)} className="flex items-center gap-2 focus:outline-none">
-              {user.photoURL ? (
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="flex items-center gap-2 focus:outline-none"
+            >
+              {user?.photoURL ? (
                 <img
-                  src={user.photoURL}
+                  src={`${user.photoURL}?sz=150`}
                   alt="Profile"
                   className="w-10 h-10 rounded-full border border-white object-cover"
-                  onError={(e) => (e.currentTarget.src = "https://via.placeholder.com/150")}
+                  onError={(e) => {
+                    e.currentTarget.src = "https://placehold.co/10?text=user"; 
+                  }}
                 />
               ) : (
-                <FaUserCircle className="w-10 h-10 text-sky-500" />
+                <FaRegUserCircle className="w-10 h-10 text-white" />
               )}
             </button>
 
@@ -85,10 +112,16 @@ const Navbar = () => {
                 <p className="text-gray-800 font-bold">{user.displayName}</p>
                 <p className="text-gray-600 text-xs truncate">{user.email}</p>
                 <hr className="my-2" />
-                <Link to={`/admin`} className="block text-gray-800 hover:bg-gray-100 px-2 py-1 rounded">
+                <Link
+                  to={`/admin`}
+                  className="block text-gray-800 hover:bg-gray-100 px-2 py-1 rounded"
+                >
                   Dashboard
                 </Link>
-                <Link to="/offers" className="block text-gray-800 hover:bg-gray-100 px-2 py-1 rounded">
+                <Link
+                  to="/offers"
+                  className="block text-gray-800 hover:bg-gray-100 px-2 py-1 rounded"
+                >
                   Offers
                 </Link>
                 <button
@@ -105,7 +138,10 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div className="md:hidden">
-        <button onClick={() => setMenuOpen(!menuOpen)} className="text-white text-2xl">
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="text-white text-2xl"
+        >
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
@@ -114,7 +150,12 @@ const Navbar = () => {
       {menuOpen && (
         <div className="absolute top-16 left-0 w-full bg-sky-400 shadow-md flex flex-col items-center p-4 md:hidden">
           {["/", "/community", "/about", "/trips"].map((route) => (
-            <Link key={route} to={route} className={`${isActive(route)} py-2`} onClick={() => setMenuOpen(false)}>
+            <Link
+              key={route}
+              to={route}
+              className={`${isActive(route)} py-2`}
+              onClick={() => setMenuOpen(false)}
+            >
               {route.replace("/", "").toUpperCase() || "HOME"}
             </Link>
           ))}
@@ -138,10 +179,18 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Link to={`/dashboard/tourist/${user.uid}`} className="py-2" onClick={() => setMenuOpen(false)}>
+              <Link
+                to={`/dashboard/tourist/${user.uid}`}
+                className="py-2"
+                onClick={() => setMenuOpen(false)}
+              >
                 Dashboard
               </Link>
-              <Link to="/offers" className="py-2" onClick={() => setMenuOpen(false)}>
+              <Link
+                to="/offers"
+                className="py-2"
+                onClick={() => setMenuOpen(false)}
+              >
                 Offers
               </Link>
               <button

@@ -10,7 +10,7 @@ const UserStories = () => {
   const { user } = useContext(AuthContext); // Get user from context
 
   useEffect(() => {
-    fetch("http://localhost:5000/community")
+    fetch("https://localhost:9000/community")
       .then((response) => response.json())
       .then((data) => setReviews(data))
       .catch((error) => console.error("Error fetching reviews:", error))
