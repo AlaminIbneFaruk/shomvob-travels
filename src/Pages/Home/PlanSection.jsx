@@ -1,44 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import PackagePlan from '../../Components/PackagePlan';
 
+const fetchPackages = async () => {
+  const response = await axios.get('packages.json');
+  const data = response.data;
+  
+  if (Array.isArray(data)) {
+    return data; // If API returns an array directly
+  } else if (Array.isArray(data.travelPackages)) {
+    return data.travelPackages; // If wrapped inside travelPackages key
+  } else {
+    throw new Error('Invalid data format received');
+  }
+};
+
 const PlanSection = () => {
-  const [packages, setPackages] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { 
+    data: packages = [], 
+    isLoading, 
+    error 
+  } = useQuery({
+    queryKey: ['packages'],
+    queryFn: fetchPackages,
+    onError: (err) => {
+      console.error('Error fetching packages:', err);
+    },
+  });
 
-  useEffect(() => {
-    const fetchPackages = async () => {
-      try {
-        const response = await fetch('https://localhost:9000/package'); 
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-
-        // Ensure correct state update based on response structure
-        if (Array.isArray(data)) {
-          setPackages(data); // If API returns an array directly
-        } else if (Array.isArray(data.travelPackages)) {
-          setPackages(data.travelPackages); // If wrapped inside travelPackages key
-        } else {
-          throw new Error('Invalid data format received');
-        }
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPackages();
-  }, []);
-
-  if (loading) {
+  if (isLoading) {
     return <div className="text-center text-lg font-semibold">Loading packages...</div>;
   }
 
   if (error) {
-    return <div className="text-center text-red-500">Error fetching packages: {error}</div>;
+    return <div className="text-center text-red-500">Error fetching packages: {error.message}</div>;
   }
 
   return (
@@ -46,7 +41,10 @@ const PlanSection = () => {
       <h2 className="text-2xl font-bold text-center mb-6">Travel Packages</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {packages.map((packageplan) => (
-          <PackagePlan packageplan={packageplan} key={packageplan._id || packageplan.id} />
+          <PackagePlan 
+            packageplan={packageplan} 
+            key={packageplan._id || packageplan.id} 
+          />
         ))}
       </div>
     </div>

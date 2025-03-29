@@ -16,14 +16,15 @@ const destinations = [
 
 const InteractiveMap = () => {
   return (
-    <div className="bg-sky-200">
-      <div className="text-2xl lg:text-3xl font-semibold mb-4 text-center">
+    <div className="bg-sky-200 p-6 my-8">
+      <div className="text-2xl lg:text-3xl font-extrabold mb-4 text-center">
         <h2>Interactive Map of Bangladesh: Must-Visit Spots</h2>
       </div>
       <MapContainer
       center={[23.685, 90.3563]} // Center of Bangladesh
       zoom={7} // Increased zoom to focus on Bangladesh
       style={{ height: "500px", width: "100%" }}
+      className="rounded-lg shadow-lg"
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

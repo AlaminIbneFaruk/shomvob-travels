@@ -25,7 +25,7 @@ const ManageProfile = () => {
         <div className="flex flex-col items-center">
           <div className="avatar">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src={user?.photoURL || 'https://via.placeholder.com/150'} alt={`${user?.displayName}'s profile`} />
+              <img src={`${user.photoURL}?sz=150`} alt={`${user?.displayName}'s profile`} />
             </div>
           </div>
           <p className="mt-4 text-lg font-medium">Role: {user?.role || 'Tourist'}</p>

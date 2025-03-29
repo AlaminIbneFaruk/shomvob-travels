@@ -1,49 +1,81 @@
-import { useEffect, useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const MyBookings = () => {
-  const [bookings, setBookings] = useState([]);
-  const navigate = useNavigate();
+// Configure axios instance
+const api = axios.create({
+  baseURL: "/",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
-  useEffect(() => {
-    // Fetch bookings from backend API
-    fetch("/bookings.json", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`, // JWT token if needed
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setBookings(data))
-      .catch((error) => console.error("Error fetching bookings:", error));
-  }, []);
+// Add request interceptor for auth token
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+const MyBookings = () => {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  // Fetch bookings query
+  const { data: bookings = [], isLoading, error } = useQuery({
+    queryKey: ["bookings"],
+    queryFn: async () => {
+      const response = await api.get("https:/localhost:9000/b");
+      return response.data;
+    },
+  });
+
+  // Cancel booking mutation
+  const cancelBookingMutation = useMutation({
+    mutationFn: (bookingId) => api.delete(`/bookings/${bookingId}`),
+    onSuccess: (_, bookingId) => {
+      // Update the bookings cache
+      queryClient.setQueryData(["bookings"], (oldData) =>
+        oldData.filter((booking) => booking._id !== bookingId)
+      );
+      alert("Booking cancelled successfully.");
+    },
+    onError: (error) => {
+      console.error("Error cancelling booking:", error);
+      alert("Failed to cancel booking.");
+    },
+  });
 
   const handlePayment = (bookingId) => {
-    navigate(`/payment/${bookingId}`); // Redirect to Stripe payment page
+    navigate(`/payment/${bookingId}`);
   };
 
-  const handleCancel = async (bookingId) => {
+  const handleCancel = (bookingId) => {
     const confirmCancel = window.confirm("Are you sure you want to cancel this booking?");
-    if (!confirmCancel) return;
-
-    try {
-      const response = await fetch(`https://your-api.com/bookings/${bookingId}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.ok) {
-        setBookings((prevBookings) => prevBookings.filter((booking) => booking._id !== bookingId));
-        alert("Booking cancelled successfully.");
-      } else {
-        alert("Failed to cancel booking.");
-      }
-    } catch (error) {
-      console.error("Error cancelling booking:", error);
+    if (confirmCancel) {
+      cancelBookingMutation.mutate(bookingId);
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="container mx-auto p-6">
+        <h2 className="text-2xl font-semibold mb-4">My Bookings</h2>
+        <div>Loading bookings...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto p-6">
+        <h2 className="text-2xl font-semibold mb-4">My Bookings</h2>
+        <div>Error loading bookings: {error.message}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto p-6">
@@ -80,8 +112,9 @@ const MyBookings = () => {
                       <button
                         className="bg-red-500 text-white px-4 py-1 rounded"
                         onClick={() => handleCancel(booking._id)}
+                        disabled={cancelBookingMutation.isLoading}
                       >
-                        Cancel
+                        {cancelBookingMutation.isLoading ? "Cancelling..." : "Cancel"}
                       </button>
                     </>
                   )}

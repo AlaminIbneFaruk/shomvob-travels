@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-
+// ... imports
 import Home from "../Pages/Home/Home.jsx";
 import Login from "../Pages/Login.jsx";
 import Register from "../Pages/Register/Register.jsx";
@@ -9,7 +9,7 @@ import PrivateRoutes from "./PrivateRoutes.jsx";
 import ErrorF2F from "../Pages/ErrorF2F.jsx";
 import Hero from "../Components/Hero.jsx";
 import Trip from "../Pages/Trip.jsx";
-import Package from "../Pages/Package.jsx";
+import Package from "../Pages/PackageDetails.jsx";
 import About from "../Pages/About.jsx";
 import Community from "../Pages/Community.jsx";
 import ManageProfile from "../Pages/ManageProfile.jsx";
@@ -25,139 +25,79 @@ import ManageProfileTG from "../Pages/TourGuideDashboard/ManageProfileTG.jsx";
 import AssignedTours from "../Pages/AssignedTours.jsx";
 import AdminDashboard from "../Pages/AdminDashboard/AdminDashboard.jsx";
 import ManageProfileAdmin from "../Pages/AdminDashboard/ManageProfileAdmin.jsx";
+import ManageUsers from "../Pages/ManageUsers.jsx";
+import ManageTourguides from "../Pages/ManageTourguides.jsx";
 import AddPackageForm from "../Pages/AdminDashboard/AddPackages.jsx";
+import Choice from "../Pages/Choice.jsx";
+import PackageDetails from "../Pages/PackageDetails.jsx";
 const Routes = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorF2F />,
     children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/guide/:id",
-        element: <TourGuide/>,
-      },
-      {
-        path: "/package-details/:id",
-        element: <Package />,
-        errorElement: <ErrorF2F />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-        errorElement: <ErrorF2F />,
-      },
-      {
-        path: "/packagedetails/:id",
+      { path:"", element: <Home /> },
+      { path: "guide/:id", element: <TourGuide /> },
+      { path: "package-details", element: <Package /> },
+      { path: "about", element: <About /> },
+      { 
+        path: "packagedetails/:id", 
         element: (
           <>
             <Hero />
-            packagedetails
+            <PackageDetails />
           </>
         ),
       },
       {
-        path: "/dashboard/",
-        element: (
-          <PrivateRoutes>
-            <Dashboard />
-          </PrivateRoutes>
-        ),
+        path: "dashboard",
+        element: <Choice />,
+      },
+      {
+        path: "bookings/:id",
+        element: <PrivateRoutes><Hero /><Bookings /></PrivateRoutes>,
+      },
+      { path: "login", element: <Login /> },
+      { path: "community", element: <Community /> },
+      { path: "register", element: <Register /> },
+      { path: "trips", element: <Trip /> },
+      {
+        path: "user-dashboard",
+        element: <PrivateRoutes><Dashboard /></PrivateRoutes>,
         children: [
           {
-            path: "tourist/",
+            path: "tourist",
             element: <Tourist />,
             children: [
-              {
-                path: "",
-                element: <ManageProfile />,
-              },
-              {
-                path: "my-bookings/:userid",
-                element: <Bookings />,
-              },
-              {
-                path: "add-stories/:userid",
-                element: <AddStories />,
-              },
-              {
-                path: "manage-stories/:userid",
-                element: <ManageStories />,
-              },
-              {
-                path: "tour-guide-application/:userid",
-                element: <TourGuideApplication />,
-              },
+              { path:"", element: <ManageProfile /> },
+              { path: "my-bookings/:userid", element: <Bookings /> },
+              { path: "add-stories/:userid", element: <AddStories /> },
+              { path: "manage-stories/:userid", element: <ManageStories /> },
+              { path: "tour-guide-application/:userid", element: <TourGuideApplication /> },
             ],
           },
         ],
       },
       {
-        path: "tourguidedashboard/",
-        element: <TourGuideDashboard />,
+        path: "guide-dashboard",
+        element: <PrivateRoutes><TourGuideDashboard /></PrivateRoutes>,
         children: [
-          {
-            path: "",
-            element: <ManageProfileTG />,
-          },
-          {
-            path: "assignedtours",
-            element: <AssignedTours />,
-          },
-          {
-            path: "add-stories",
-            element: <AddStories />,
-          },              {
-                path: "manage-stories/:userid",
-                element: <ManageStories />,
-              },
+          { path:"", element: <ManageProfileTG /> },
+          { path: "assignedtours", element: <AssignedTours /> },
+          { path: "add-stories", element: <AddStories /> },
+          { path: "manage-stories/:userid", element: <ManageStories /> },
         ],
       },
       {
-        path: "admin",
-        element: (
-          <AdminDashboard></AdminDashboard>
-        ),
-        children:[
-          {
-            path: "",
-            element: <ManageProfileAdmin />,
-          },
-          {
-            path: "add-package",
-            element: <AddPackageForm />,
-          },
-        ]
-      },
-      {
-        path: "/bookings/:id",
-        element: (
-          <PrivateRoutes>
-            <>
-              <Hero />
-              bookings
-            </>
-          </PrivateRoutes>
-        ),
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/community",
-        element: <Community />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path: "/trips",
-        element: <Trip />,
-      },
+        path: "admin-dashboard",
+        element: <PrivateRoutes><AdminDashboard /></PrivateRoutes>,
+        children: [
+          { path:"", element: <ManageProfileAdmin /> },
+          { path: "add-package", element: <AddPackageForm /> },
+          { path: "manage-users", element: <ManageUsers /> },
+          { path: "manage-candidates", element: <ManageTourguides /> },
+        ],
+      }
     ],
   },
   {

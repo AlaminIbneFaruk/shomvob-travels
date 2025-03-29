@@ -10,7 +10,7 @@ const UserStories = () => {
 
   useEffect(() => {
     axios
-      .get("https://localhost:8000/community-tab")
+      .get("userStories.json") // Fetch data from JSON file
       .then((response) => {
         console.log("Fetched Data:", response.data); // Debugging step
         setReviews(Array.isArray(response.data) ? response.data : []);

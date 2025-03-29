@@ -1,7 +1,16 @@
+[{
+  "year":2026,
+  "totalPayment": 19000,
+  "totalTourGuides": 56,
+  "totalPackages": 29,
+  "totalClients": 320,
+  "totalStories": 79
+},
 {
-  "totalPayment": 12500,
-  "totalTourGuides": 42,
-  "totalPackages": 18,
-  "totalClients": 256,
-  "totalStories": 74
-}
+  "year":2027,
+  "totalPayment": 21000,
+  "totalTourGuides": 70,
+  "totalPackages": 35,
+  "totalClients": 356,
+  "totalStories": 84
+}]

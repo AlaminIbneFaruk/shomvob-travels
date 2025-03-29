@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
-import { Helmet } from "react-helmet";
+
 import axios from 'axios';
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -25,7 +25,7 @@ const Login = () => {
         const user = { email: userCredential.user.email };
   
         // Send user email to backend and store JWT in cookies
-        axios.post("http://localhost:8000/jwt", user)
+        axios.post("http://localhost:8000/auth/login", user)
           .then(data => {
             console.log("JWT Set in Cookies:", data);
           })
@@ -65,9 +65,7 @@ const Login = () => {
   }
   return (
     <>
-      <Helmet>
-        <title>Login | Shomvob Travels</title>
-      </Helmet>
+
       <div
         className="py-20 bg-gradient-to-r from-cyan-400  to-blue-500 
        flex justify-center items-center"

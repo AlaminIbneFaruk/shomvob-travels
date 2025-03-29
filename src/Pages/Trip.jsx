@@ -1,61 +1,61 @@
-import { useEffect, useState } from "react";
-import PackagePlan from "../Components/PackagePlan";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import PackagePlan2 from "../Components/PackagePlan2";
+
+
+const fetchTravelPackages = async () => {
+  const response = await axios.get("http://localhost:9000/trip");
+  if (!response.data) {
+    throw new Error("Failed to fetch travel packages");
+  }
+  return response.data;
+};
 
 const Trip = () => {
-  const [travelPackages, setTravelPackages] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const {
+    data: travelPackages = [],
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["travelPackages"],
+    queryFn: fetchTravelPackages,
+  });
 
-  useEffect(() => {
-    const fetchTravelPackages = async () => {
-      try {
-        const response = await fetch("https://assignment-12-server-lely8d3w9.vercel.app/trip");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-  
-        // Ensure data is correctly structured before setting state
-        if (Array.isArray(data)) {
-          setTravelPackages(data); // API returns an array directly
-        } else if (Array.isArray(data.travelPackages)) {
-          setTravelPackages(data.travelPackages); // If wrapped inside travelPackages
-        } else {
-          throw new Error("Invalid data format received");
-        }
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-  
-    fetchTravelPackages();
-  }, []);
-  
-
-  if (loading) {
-    return <div className="text-center text-xl font-semibold">Loading...</div>;
+  if (isLoading) {
+    return <div className="loader">Loading...</div>;
   }
 
-  if (error) {
-    return <div className="text-center text-red-600 font-semibold">Error: {error}</div>;
+  if (isError) {
+    return <p className="text-red-500">Error loading travel packages.</p>;
   }
+
+  // Dynamic title based on the number of packages
+ 
 
   return (
-    <section
-      className="bg-fixed bg-cover bg-center min-h-screen"
-      style={{ backgroundImage: "url('https://i.ibb.co/wFhzgbjX/heroimg1.jpg')" }}
-    >
-      <div className="p-24 backdrop-blur-sm">
-        <h1 className="text-4xl font-bold text-center mb-6">Travel Packages</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {travelPackages.map((packageItem) => (
-            <PackagePlan packageplan={packageItem} key={packageItem?.id} />
-          ))}
+    <>
+
+      <section
+        className="bg-fixed bg-cover bg-center min-h-screen"
+        style={{
+          backgroundImage: "url('https://i.ibb.co/wFhzgbjX/heroimg1.jpg')",
+        }}
+      >
+        <div className="p-24 backdrop-blur-sm">
+          <h1 className="text-4xl font-bold text-center mb-6 text-white border-8 rounded-badge bg-black bg-opacity-70 backdrop-blur-md border-sky-200 max-w-96 mx-auto">
+            Travel Packages
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {travelPackages.map((packageItem) => (
+              <PackagePlan2
+                packageplan={packageItem}
+                key={packageItem?.id || Math.random()}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

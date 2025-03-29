@@ -1,30 +1,49 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from "react-share";
 import { FaTwitter, FaFacebook, FaLinkedin } from "react-icons/fa";
-import { AuthContext } from "../Contexts/AuthProvider"; 
-const UserStories = () => {
-  const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-  const { user } = useContext(AuthContext); // Get user from context
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { AuthContext } from "../Contexts/AuthProvider";
 
-  useEffect(() => {
-    fetch("https://localhost:9000/community")
-      .then((response) => response.json())
-      .then((data) => setReviews(data))
-      .catch((error) => console.error("Error fetching reviews:", error))
-      .finally(() => setLoading(false));
-  }, []);
+const UserStories = () => {
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+
+  // Configure axios instance
+  const axiosInstance = axios.create({
+    baseURL: '/', // Adjust base URL as needed
+  });
+
+  // Fetch reviews using TanStack Query
+  const { data: reviews = [], isLoading, isError, error } = useQuery({
+    queryKey: ['reviews'],
+    queryFn: async () => {
+      const response = await axiosInstance.get('stories.json');
+      return response.data;
+    },
+    // Optional configurations
+    staleTime: 5 * 60 * 1000, // Data stays fresh for 5 minutes
+    cacheTime: 30 * 60 * 1000, // Cache data for 30 minutes
+    retry: 2, // Retry failed requests twice
+  });
 
   const handleShareClick = (event) => {
     if (!user) {
-      event.preventDefault(); // Prevent actual sharing
-      navigate("/login"); // Redirect to login
+      event.preventDefault();
+      navigate("/login");
     }
   };
 
-  if (loading) return <p className="text-center text-gray-500">Loading...</p>;
+  if (isLoading) return (
+    <p className="text-center text-gray-500">Loading...</p>
+  );
+
+  if (isError) return (
+    <p className="text-center text-red-500">
+      Error loading stories: {error.message}
+    </p>
+  );
 
   return (
     <div className="p-6 bg-sky-200">

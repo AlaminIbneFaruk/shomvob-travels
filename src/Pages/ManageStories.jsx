@@ -1,36 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+
+const fetchStories = async () => {
+  const response = await axios.get('/userStories.json');
+  if (!Array.isArray(response.data)) {
+    throw new Error('Fetched data is not an array');
+  }
+  return response.data;
+};
 
 const ManageStories = () => {
-  const [stories, setStories] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { 
+    data: stories = [], 
+    isLoading, 
+    error,
+    refetch 
+  } = useQuery({
+    queryKey: ['stories'],
+    queryFn: fetchStories,
+    onError: (err) => {
+      console.error('Error fetching stories:', err);
+    },
+  });
 
-  useEffect(() => {
-    const fetchStories = async () => {
-      try {
-        const response = await fetch('/userStories.json'); 
-        if (!response.ok) {
-          throw new Error('Failed to fetch stories');
-        }
-        const data = await response.json();
-        console.log('Fetched data:', data);
+  if (isLoading) {
+    return <div className="text-center text-lg">Loading stories...</div>;
+  }
 
-        if (Array.isArray(data)) {
-          setStories(data);
-        } else {
-          console.error('Fetched data is not an array:', data);
-        }
-      } catch (error) {
-        console.error('Error fetching stories:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchStories();
-  }, []);
-
-  if (loading) {
-    return <div className="text-center text-lg">Loading stories...</div>; // Loading feedback
+  if (error) {
+    return (
+      <div className="text-center text-lg text-error">
+        Error loading stories: {error.message}
+        <button 
+          className="btn btn-primary ml-4"
+          onClick={() => refetch()}
+        >
+          Retry
+        </button>
+      </div>
+    );
   }
 
   return (
@@ -54,8 +62,8 @@ const ManageStories = () => {
                 <p className="text-sm text-gray-600">Rating: {story.rating}</p>
                 <p className="text-gray-800">{story.comment}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-outline  border border-b-4 btn-primary">Edit</button>
-                  <button className="btn btn-outline  border border-b-4 btn-error">Delete</button>
+                  <button className="btn btn-outline border border-b-4 btn-primary">Edit</button>
+                  <button className="btn btn-outline border border-b-4 btn-error">Delete</button>
                 </div>
               </div>
             </div>

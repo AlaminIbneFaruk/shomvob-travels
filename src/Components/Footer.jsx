@@ -1,6 +1,6 @@
 import {
   FaFacebookF,
-  FaTwitter,
+  FaGithub,
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
@@ -65,11 +65,11 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-semibold mb-3">Follow Us</h3>
           <div className="flex justify-center md:justify-start space-x-4">
-            <a href="#" className="text-gray-100 hover:text-white text-xl">
+            <a href="https://www.facebook.com/alamin.ibnefar/" className="text-gray-100 hover:text-white text-xl">
               <FaFacebookF />
             </a>
-            <a href="#" className="text-gray-100 hover:text-white text-xl">
-              <FaTwitter />
+            <a href="https://github.com/AlaminIbneFaruk" className="text-gray-100 hover:text-white text-xl">
+              <FaGithub />
             </a>
             <a href="#" className="text-gray-100 hover:text-white text-xl">
               <FaInstagram />

@@ -1,13 +1,10 @@
-import { Helmet } from "react-helmet";
+
 import Hero from "../Components/Hero.jsx";
 import UserStories2 from "../Components/UserStories2.jsx";
 
 const Community = () => {
   return (
     <div>
-      <Helmet>
-        <title>Community | Shomvob Travels</title>
-      </Helmet>
       <Hero 
         image={"https://i.ibb.co/wFhzgbjX/heroimg1.jpg"} 
         title={"Explore Together: Join Our Travel Community"} 

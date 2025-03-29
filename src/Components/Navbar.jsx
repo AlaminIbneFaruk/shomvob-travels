@@ -10,11 +10,11 @@ const Navbar = () => {
   const location = useLocation();
 
   // Check if current path is inside dashboard routes
-  const isDashboardPath = location.pathname.startsWith("/dashboard");
+  const isDashboardPath = location.pathname.startsWith("/user-dashboard");
   const isTourGuideDashboardPath = location.pathname.startsWith(
-    "/tourguidedashboard"
+    "/guide-dashboard"
   );
-  const isAdminDashboardPath = location.pathname.startsWith("/admin");
+  const isAdminDashboardPath = location.pathname.startsWith("/admin-dashboard");
 
   // Ref for closing dropdown on outside click
   const dropdownRef = useRef(null);
@@ -113,7 +113,7 @@ const Navbar = () => {
                 <p className="text-gray-600 text-xs truncate">{user.email}</p>
                 <hr className="my-2" />
                 <Link
-                  to={`/admin`}
+                  to={`/dashboard`}
                   className="block text-gray-800 hover:bg-gray-100 px-2 py-1 rounded"
                 >
                   Dashboard
@@ -180,7 +180,7 @@ const Navbar = () => {
           ) : (
             <>
               <Link
-                to={`/dashboard/tourist/${user.uid}`}
+                to={`/dashboard`}
                 className="py-2"
                 onClick={() => setMenuOpen(false)}
               >

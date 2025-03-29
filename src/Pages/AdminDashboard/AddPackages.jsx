@@ -1,4 +1,14 @@
 import { useState } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
+
+const addPackage = async (packageDetails) => {
+  const response = await axios.post('/api/packages', packageDetails);
+  if (!response.data) {
+    throw new Error('Failed to add package');
+  }
+  return response.data;
+};
 
 const AddPackages = () => {
   const [packageDetails, setPackageDetails] = useState({
@@ -10,6 +20,29 @@ const AddPackages = () => {
     image: '',
   });
 
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: addPackage,
+    onSuccess: () => {
+      // Invalidate and refetch packages query if it exists
+      queryClient.invalidateQueries(['travelPackages']);
+      // Reset form
+      setPackageDetails({
+        name: '',
+        description: '',
+        price: '',
+        duration: '',
+        location: '',
+        image: '',
+      });
+      console.log('Package added successfully!');
+    },
+    onError: (error) => {
+      console.error('Error adding package:', error.message);
+    },
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setPackageDetails((prevDetails) => ({
@@ -18,29 +51,9 @@ const AddPackages = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Implement API call to save the package
-    try {
-      const response = await fetch('/api/packages', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(packageDetails),
-      });
-
-      if (response.ok) {
-        // Handle success (e.g., show a success message or redirect)
-        console.log('Package added successfully!');
-      } else {
-        // Handle error
-        console.error('Error adding package:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    mutation.mutate(packageDetails);
   };
 
   return (
@@ -129,9 +142,23 @@ const AddPackages = () => {
             className="input input-bordered w-full"
           />
         </div>
-        <button type="submit" className="btn btn-outline  border border-b-4 bg-blue-500 w-full mt-4">
-          Add Package
+        <button 
+          type="submit" 
+          className="btn btn-outline border border-b-4 bg-blue-500 w-full mt-4"
+          disabled={mutation.isLoading}
+        >
+          {mutation.isLoading ? 'Adding Package...' : 'Add Package'}
         </button>
+        {mutation.isError && (
+          <p className="text-red-500 mt-2">
+            Error: {mutation.error.message}
+          </p>
+        )}
+        {mutation.isSuccess && (
+          <p className="text-green-500 mt-2">
+            Package added successfully!
+          </p>
+        )}
       </form>
     </div>
   );
