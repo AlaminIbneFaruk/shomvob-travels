@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
 const addPackage = async (packageDetails) => {
-  const response = await axios.post('/api/packages', packageDetails);
+  const response = await axios.post('/packages', packageDetails);
   if (!response.data) {
     throw new Error('Failed to add package');
   }

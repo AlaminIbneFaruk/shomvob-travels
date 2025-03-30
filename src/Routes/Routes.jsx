@@ -13,9 +13,9 @@ import Package from "../Pages/PackageDetails.jsx";
 import About from "../Pages/About.jsx";
 import Community from "../Pages/Community.jsx";
 import ManageProfile from "../Pages/ManageProfile.jsx";
-import Tourist from "../Pages/Tourist.jsx";
 import Dashboard from "../Layout/Dashboard.jsx";
 import Bookings from "../Pages/Bookings.jsx";
+import BookForm from "../Pages/BookForm.jsx";
 import TourGuide from "../Pages/TourGuide.jsx";
 import AddStories from "../Pages/AddStories.jsx";
 import ManageStories from "../Pages/ManageStories.jsx";
@@ -30,6 +30,7 @@ import ManageTourguides from "../Pages/ManageTourguides.jsx";
 import AddPackageForm from "../Pages/AdminDashboard/AddPackages.jsx";
 import Choice from "../Pages/Choice.jsx";
 import PackageDetails from "../Pages/PackageDetails.jsx";
+import UpdateProfile from "../Pages/UpdateProfile.jsx";
 const Routes = createBrowserRouter([
   {
     path: "/",
@@ -41,11 +42,20 @@ const Routes = createBrowserRouter([
       { path: "package-details", element: <Package /> },
       { path: "about", element: <About /> },
       { 
-        path: "packagedetails/:id", 
+        path: "package-details/:id", 
         element: (
           <>
             <Hero />
             <PackageDetails />
+          </>
+        ),
+      },
+      {
+        path: "book-form/:id", 
+        element: (
+          <>
+            <Hero />
+            <BookForm />
           </>
         ),
       },
@@ -65,17 +75,13 @@ const Routes = createBrowserRouter([
         path: "user-dashboard",
         element: <PrivateRoutes><Dashboard /></PrivateRoutes>,
         children: [
-          {
-            path: "tourist",
-            element: <Tourist />,
-            children: [
-              { path:"", element: <ManageProfile /> },
-              { path: "my-bookings/:userid", element: <Bookings /> },
-              { path: "add-stories/:userid", element: <AddStories /> },
-              { path: "manage-stories/:userid", element: <ManageStories /> },
-              { path: "tour-guide-application/:userid", element: <TourGuideApplication /> },
-            ],
-          },
+          { path:"", element: <ManageProfile /> },
+          { path: "updateprofile/:userid", element: <UpdateProfile/> },
+          { path: "my-bookings/:userid", element: <Bookings /> },
+          { path: "add-stories/:userid", element: <AddStories /> },
+          { path: "manage-stories/:userid", element: <ManageStories /> },
+          { path: "tour-guide-application/:userid", element: <TourGuideApplication /> },
+          
         ],
       },
       {

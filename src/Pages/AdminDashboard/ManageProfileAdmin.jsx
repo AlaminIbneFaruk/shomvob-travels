@@ -4,7 +4,7 @@ import axios from "axios";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const fetchAdminStats = async () => {
-  const currentYear = new Date().getFullYear() || "2027";
+  const currentYear = new Date().getFullYear();
   const response = await axios.get(
     `http://localhost:9000/admin-stats/${currentYear}`
   );

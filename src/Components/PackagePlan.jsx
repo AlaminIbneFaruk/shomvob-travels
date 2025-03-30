@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
 const PackagePlan = ({ packageplan }) => {
   const {
+    _id,
     name,
     price,
     image,
@@ -10,7 +11,7 @@ const PackagePlan = ({ packageplan }) => {
   const navigate = useNavigate();
   const handleViewMore = () => {
     // Logic for booking, e.g., redirecting to a booking page
-    navigate(`/package-details`);
+    navigate(`/package-details/${_id}`);
   };
 
   return (
@@ -53,7 +54,7 @@ const PackagePlan = ({ packageplan }) => {
 
 PackagePlan.propTypes = {
   packageplan: PropTypes.shape({
-    _id:PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     duration: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -67,3 +68,10 @@ PackagePlan.propTypes = {
 };
 
 export default PackagePlan;
+
+/**
+ * Have to add :
+ * 1.Tour guides here and in the json in the database
+ * 2.When clicking on specific tour guide goes to his details page
+ * 3.A button to go to the bookings form 
+ */

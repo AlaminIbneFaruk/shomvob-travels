@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const fetchTourGuides = async () => {
-  const response = await axios.get("tourguides.json");
+  const response = await axios.get("http://localhost:9000/guides/random");
   if (!response.data) {
     throw new Error("Failed to fetch tour guides");
   }
@@ -57,7 +57,7 @@ const TravelGuide = () => {
                 <div className="card-actions mt-2">
                   <button
                     className="btn btn-outline border border-b-4 btn-info w-full"
-                    onClick={() => navigate(`/package-details`)} // Consider updating to guide-specific route
+                    onClick={() => navigate(`/guide/${guide._id}`)} 
                   >
                     View Details
                   </button>

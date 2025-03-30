@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const PackagePlan2 = ({ packageplan }) => {
   const {
+    _id,
     name,
     price,
     stockImages,
@@ -11,7 +12,7 @@ const PackagePlan2 = ({ packageplan }) => {
   const navigate = useNavigate();
 
   const handleViewMore = () => {
-    navigate(`/package-details`);
+    navigate(`/package-details/${_id}`);
   };
 
   return (

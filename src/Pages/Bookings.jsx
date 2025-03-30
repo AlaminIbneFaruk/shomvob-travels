@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 // Configure axios instance
 const api = axios.create({
-  baseURL: "/",
+  baseURL: "http://localhost:9000",
   headers: {
     "Content-Type": "application/json",
   },
@@ -27,7 +27,7 @@ const MyBookings = () => {
   const { data: bookings = [], isLoading, error } = useQuery({
     queryKey: ["bookings"],
     queryFn: async () => {
-      const response = await api.get("https:/localhost:9000/b");
+      const response = await api.get("/bookings");
       return response.data;
     },
   });
@@ -61,7 +61,7 @@ const MyBookings = () => {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto p-6">
+      <div className="container mx-auto p-6 my-20">
         <h2 className="text-2xl font-semibold mb-4">My Bookings</h2>
         <div>Loading bookings...</div>
       </div>
@@ -70,7 +70,7 @@ const MyBookings = () => {
 
   if (error) {
     return (
-      <div className="container mx-auto p-6">
+      <div className="container mx-auto p-6 my-20">
         <h2 className="text-2xl font-semibold mb-4">My Bookings</h2>
         <div>Error loading bookings: {error.message}</div>
       </div>
@@ -78,7 +78,7 @@ const MyBookings = () => {
   }
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 my-20">
       <h2 className="text-2xl font-semibold mb-4">My Bookings</h2>
       <table className="w-full border-collapse border border-gray-300">
         <thead>
@@ -96,12 +96,12 @@ const MyBookings = () => {
             bookings.map((booking) => (
               <tr key={booking._id} className="border text-center">
                 <td className="border p-2">{booking.packageName}</td>
-                <td className="border p-2">{booking.tourGuideName}</td>
-                <td className="border p-2">{booking.tourDate}</td>
-                <td className="border p-2">${booking.price}</td>
-                <td className="border p-2">{booking.status}</td>
+                <td className="border p-2">{booking.tourGuide}</td>
+                <td className="border p-2">{new Date(booking.tourDate).toDateString()}</td>
+                <td className="border p-2">${booking.price.toFixed(2)}</td>
+                <td className="border p-2 capitalize">{booking.status}</td>
                 <td className="border p-2">
-                  {booking.status === "Pending" && (
+                  {booking.status.toLowerCase() === "pending" && (
                     <>
                       <button
                         className="bg-blue-500 text-white px-4 py-1 rounded mr-2"

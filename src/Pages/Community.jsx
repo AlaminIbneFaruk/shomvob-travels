@@ -4,7 +4,7 @@ import UserStories2 from "../Components/UserStories2.jsx";
 
 const Community = () => {
   return (
-    <div>
+    <div className="bg-sky-200">
       <Hero 
         image={"https://i.ibb.co/wFhzgbjX/heroimg1.jpg"} 
         title={"Explore Together: Join Our Travel Community"} 

@@ -1,9 +1,7 @@
-
-
 const About = () => {
   return (
     <>
-      <div className="max-w-4xl mx-auto mt-24 mb-8">
+      <div className="card max-w-4xl mx-auto mt-32 mb-8">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-primary mb-4">
             About Shomvob Travels
@@ -16,7 +14,7 @@ const About = () => {
         </div>
 
         <div className="mt-10">
-          <div className="card bg-base-100 shadow-xl p-6">
+          <div className="card bg-base-100 shadow-lg hover:shadow-2xl p-6">
             <div className="avatar flex justify-center">
               <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <img src="" alt="Developer" />
@@ -36,23 +34,32 @@ const About = () => {
               <h3 className="text-xl font-semibold text-center text-secondary">
                 Projects
               </h3>
-              <ul className="list-none text-center space-y-2 mt-2">
-                <li>
-                  <a href="your-project-link-1" className="link link-primary">
+              <div className="flex flex-col md:flex-row items-center justify-between space-y-2 mt-2">
+                
+                  <a
+                    href="https://shomvobtravels.netlify.app/"
+                    className="link p-6 badge-primary link-white badge shadow-xl hover:shadow-2xl hover:scale-105 border-4 border-black"
+                  >
                     🌍 Tourism Management System
                   </a>
-                </li>
-                <li>
-                  <a href="your-project-link-2" className="link link-primary">
+                
+                
+                  <a
+                    href="https://assignment-11-62e47.web.app/"
+                    className="link p-6 link-primary badge shadow-xl hover:shadow-2xl hover:scale-105 border-4 border-black"
+                  >
                     🏛️ Artifacts Management
                   </a>
-                </li>
-                <li>
-                  <a href="your-project-link-3" className="link link-primary">
-                    ✍️ Blog Management System
+                
+                
+                  <a
+                    href="https://visabridge2.netlify.app/"
+                    className="link p-6 link-black badge badge-info shadow-xl hover:shadow-2xl  hover:scale-105 border-4 border-black"
+                  >
+                    🛂 Visa Management System
                   </a>
-                </li>
-              </ul>
+                
+              </div>
             </div>
 
             <div className="mt-6 text-center">

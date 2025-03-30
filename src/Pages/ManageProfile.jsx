@@ -1,19 +1,17 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import EditProfileModal from './EditProfileModal';
 import { AuthContext } from '../Contexts/AuthProvider';
 
 const ManageProfile = () => {
   const { user } = useContext(AuthContext);
-  const [isModalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleEditClick = () => {
-    setModalOpen(true);
+    navigate(`/user-dashboard/updateprofile/${user?.uid}`);
   };
 
   const handleApplyForTourGuide = () => {
-    navigate('/join-as-tour-guide');
+    navigate(`/user-dashboard/tour-guide-application/${user?.uid}`);
   };
 
   return (
@@ -34,19 +32,14 @@ const ManageProfile = () => {
         </div>
 
         <div className="mt-6 space-y-3">
-          <button onClick={handleEditClick} className="btn btn-outline  border border-b-4 btn-primary w-full">
+          <button onClick={handleEditClick} className="btn btn-outline border border-b-4 btn-primary w-full">
             Edit Profile
           </button>
-          <button onClick={handleApplyForTourGuide} className="btn btn-outline  border border-b-4 w-full">
+          <button onClick={handleApplyForTourGuide} className="btn btn-outline border border-b-4 w-full">
             Apply For Tour Guide
           </button>
         </div>
       </div>
-
-      {/* Edit Profile Modal */}
-      {isModalOpen && (
-        <EditProfileModal user={user} onClose={() => setModalOpen(false)} />
-      )}
     </div>
   );
 };

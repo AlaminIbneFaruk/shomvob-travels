@@ -47,7 +47,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-sky-400 shadow-md p-5 flex justify-between items-center z-50">
+    <nav className="absolute top-0 left-0 w-full bg-sky-400 shadow-md p-5 flex justify-between items-center z-50">
       <Link
         to="/"
         className="btn btn-ghost font-extrabold text-lg lg:text-3xl "

@@ -1,105 +1,91 @@
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { Outlet, NavLink } from "react-router-dom";
 import {
-  FaBars,
-  FaTimes,
-  FaLocationArrow,
-  FaSignOutAlt,
   FaUserCircle,
-  FaBook,
+  FaLocationArrow,
   FaPlusCircle,
   FaArrowCircleLeft,
 } from "react-icons/fa";
-import { Helmet } from "react-helmet";
 
 const TourGuideDashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const DashboardTheme = {
+    title: "Tour Guide Dashboard",
+    sidebarItems: [
+      {
+        icon: <FaUserCircle />,
+        label: "Manage Profile",
+        path: "/tourguidedashboard",
+      },
+      {
+        icon: <FaLocationArrow />,
+        label: "My Assigned Tours",
+        path: "assigned-tours",
+      },
+      { icon: <FaPlusCircle />, label: "Add Stories", path: "add-stories" },
+      { icon: <FaArrowCircleLeft />, label: "Home", path: "/" },
+    ],
+  };
+
+  const isActive = (path) =>
+    location.pathname === path
+      ? "font-bold underline text-black"
+      : "text-white";
 
   return (
     <>
       <Helmet>
-        <title>Tour Guides Dashboard | Shomvob Travels</title>
+        <title>Tour Guide Dashboard | Shomvob Travels</title>
       </Helmet>
-      <div className="flex">
+      <div className="flex bg-sky-200 flex-col md:flex-row">
         {/* Sidebar */}
         <aside
-          className={`bg-blue-600 text-white w-64 p-5 fixed md:relative h-full md:h-auto  transition-transform ${
-            sidebarOpen ? "translate-x-0" : "-translate-x-64"
-          } md:translate-x-0`}
+          className={`bg-blue-600 text-white p-4 shadow-lg transition-all duration-300 ${
+            isSidebarOpen ? "w-64" : "w-20"
+          } fixed md:relative h-full md:h-auto z-10`}
         >
           <button
-            onClick={() => setSidebarOpen(false)}
-            className="md:hidden absolute top-4 right-4 text-white text-2xl"
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="flex items-center justify-center p-2 rounded-md hover:bg-blue-500 focus:outline-none mb-4 transition-all duration-300"
           >
-            <FaTimes />
+            <img
+              src="https://i.ibb.co.com/DgDYdY8J/Shomvob-travels.png"
+              alt="logo"
+              className={`transition-all duration-300 ${
+                isSidebarOpen ? "w-32" : "w-12"
+              }`}
+            />
           </button>
 
-          <h2 className="text-xl font-bold mb-6 text-center">
-            Tour Guide Panel
-          </h2>
-          <ul className="space-y-4">
-            <li>
-              <Link
-                to="/tourguidedashboard/"
-                className="flex items-center gap-2 hover:bg-blue-500 p-2 rounded"
+          <nav className="space-y-4">
+            {DashboardTheme.sidebarItems.map((item, index) => (
+              <NavLink
+                to={item.path}
+                key={index}
+                className={`block ${isActive(item.path)}`}
               >
-                <FaUserCircle /> Manage Users
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/tourguidedashboard/assignedtours"
-                className="flex items-center gap-2 hover:bg-blue-500 p-2 rounded"
-              >
-                <FaLocationArrow /> My Assigned Tours
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/tourguidedashboard/add-stories"
-                className="flex items-center gap-2 hover:bg-blue-500 p-2 rounded"
-              >
-                <FaPlusCircle /> Add Stories
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/tourguidedashboard/manage-stories"
-                className="flex items-center gap-2 hover:bg-blue-500 p-2 rounded"
-              >
-                <FaBook /> Manage Stories
-              </Link>
-            </li>
-            <li>
-              <button className="flex items-center gap-2 hover:bg-red-500 p-2 rounded w-full text-left">
-                <FaSignOutAlt /> Logout
-              </button>
-            </li>
-            <li>
-              <Link
-                to="/"
-                className="flex items-center gap-2 hover:bg-red-500 p-2 rounded w-full text-left"
-              >
-                <FaArrowCircleLeft /> Home
-              </Link>
-            </li>
-          </ul>
+                <div className="flex items-center space-x-3 p-2 hover:bg-white hover:text-black rounded cursor-pointer text-white">
+                  {item.icon}
+                  {isSidebarOpen && <span>{item.label}</span>}
+                </div>
+              </NavLink>
+            ))}
+          </nav>
         </aside>
 
         {/* Main Content */}
-        <div className="flex-1 p-6 ">
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setSidebarOpen(true)}
-            className="md:hidden text-blue-600 text-2xl mb-4"
-          >
-            <FaBars />
-          </button>
+        <div className="flex-1 flex flex-col">
+          {/* Topbar */}
+          <header className="bg-white p-4 shadow-md flex justify-between items-center sticky top-0 z-10 w-full">
+            <h1 className="text-xl font-semibold">{DashboardTheme.title}</h1>
+          </header>
 
-          <h1 className="text-2xl font-bold mb-4">Welcome to Your Dashboard</h1>
-
-          {/* Dashboard Overview */}
-          <Outlet />
+          {/* Content Area */}
+          <div className="h-[100vh]">
+            <Outlet />
+          </div>
         </div>
       </div>
     </>

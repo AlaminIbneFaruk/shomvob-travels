@@ -3,7 +3,7 @@ import axios from 'axios';
 import PackagePlan from '../../Components/PackagePlan';
 
 const fetchPackages = async () => {
-  const response = await axios.get('packages.json');
+  const response = await axios.get('http://localhost:9000/packages/random');
   const data = response.data;
   
   if (Array.isArray(data)) {

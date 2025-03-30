@@ -1,16 +1,23 @@
 import { useState, useEffect } from "react";
 import axios from "axios"; // Import Axios
-
-import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from "react-share";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+} from "react-share";
 import { FaTwitter, FaFacebook, FaLinkedin } from "react-icons/fa";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 const UserStories = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   useEffect(() => {
     axios
-      .get("userStories.json") // Fetch data from JSON file
+      .get("http://localhost:9000/stories") // Fetch data from JSON file
       .then((response) => {
         console.log("Fetched Data:", response.data); // Debugging step
         setReviews(Array.isArray(response.data) ? response.data : []);
@@ -20,6 +27,14 @@ const UserStories = () => {
   }, []);
 
   if (loading) return <p className="text-center text-gray-500">Loading...</p>;
+  const handleShareClick = (event) => {
+    if (!user) {
+      event.preventDefault();
+      navigate("/login");
+    }
+  };
+
+  const currentURL = typeof window !== "undefined" ? window.location.href : "";
 
   return (
     <div className="p-6 bg-sky-200">
@@ -33,46 +48,73 @@ const UserStories = () => {
         </p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
-          {reviews.map((review) => (
-            <div key={review.id} className="card bg-base-100 shadow-xl border p-4">
-              <div className="card-body justify-center text-center">
-                <img
-                  src={review.image || "https://placehold.co/600x400"}
-                  alt={review.name}
-                  className="rounded-lg mb-4 h-40 object-cover"
-                />
-                <h3 className="card-title text-lg">{review.name}</h3>
+          {reviews.map((review) => {
+            const rating = Number(review.rating) || 0;
 
-                <div className="rating rating-sm my-2">
-                  {Array.from({ length: 5 }, (_, i) => (
-                    <input
-                      key={i}
-                      type="radio"
-                      className={`mask mask-star-2 ${i < review.rating ? "bg-yellow-500" : "bg-gray-300"}`}
-                      disabled
-                    />
-                  ))}
-                </div>
+            return (
+              <div
+                key={review._id || review.id}
+                className="card bg-base-100 shadow-xl border"
+              >
+                <div className="card-body flex justify-center">
+                  <img
+                    src={
+                      review.image?.trim()?.length
+                        ? review.image
+                        : "https://placehold.co/600x400"
+                    }
+                    alt={review.name || "User Story"}
+                    className="rounded-lg mb-4"
+                  />
+                  <h3 className="card-title text-lg">{review.name}</h3>
 
-                <p className="text-gray-600">{review.comment}</p>
+                  {/* Fixed rating system */}
+                  <div className="flex">
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <span
+                        key={i}
+                        className={`text-xl ${
+                          i < rating ? "text-yellow-500" : "text-gray-300"
+                        }`}
+                      >
+                        ★
+                      </span>
+                    ))}
+                  </div>
 
-                {/* Social Share Buttons */}
-                <div className="flex justify-center gap-4 mt-4">
-                  <FacebookShareButton url={window.location.href} quote={review.comment}>
-                    <FaFacebook className="text-3xl text-blue-600 cursor-pointer hover:scale-110 transition" />
-                  </FacebookShareButton>
+                  <p className="text-gray-600">
+                    {review.comment || "Check out this amazing story!"}
+                  </p>
 
-                  <TwitterShareButton url={window.location.href} title={review.comment}>
-                    <FaTwitter className="text-3xl text-blue-400 cursor-pointer hover:scale-110 transition" />
-                  </TwitterShareButton>
+                  <div className="flex justify-between space-x-4 mt-4">
+                    <FacebookShareButton
+                      url={currentURL}
+                      quote={review.comment || "Check out this amazing story!"}
+                      onClick={handleShareClick}
+                    >
+                      <FaFacebook className="text-3xl text-blue-600 cursor-pointer" />
+                    </FacebookShareButton>
 
-                  <LinkedinShareButton url={window.location.href} title={review.comment}>
-                    <FaLinkedin className="text-3xl text-blue-700 cursor-pointer hover:scale-110 transition" />
-                  </LinkedinShareButton>
+                    <TwitterShareButton
+                      url={currentURL}
+                      title={review.comment || "Check out this amazing story!"}
+                      onClick={handleShareClick}
+                    >
+                      <FaTwitter className="text-3xl text-blue-400 cursor-pointer" />
+                    </TwitterShareButton>
+
+                    <LinkedinShareButton
+                      url={currentURL}
+                      title={review.comment || "Check out this amazing story!"}
+                      onClick={handleShareClick}
+                    >
+                      <FaLinkedin className="text-3xl text-blue-700 cursor-pointer" />
+                    </LinkedinShareButton>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>
