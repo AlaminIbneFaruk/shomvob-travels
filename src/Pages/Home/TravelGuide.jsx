@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const fetchTourGuides = async () => {
-  const response = await axios.get("http://localhost:9000/guides/random");
+  const response = await axios.get("https://assignment-12-server-three-iota.vercel.app/guides/random");
   if (!response.data) {
     throw new Error("Failed to fetch tour guides");
   }

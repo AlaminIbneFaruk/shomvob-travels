@@ -4,7 +4,7 @@ import PackagePlan2 from "../Components/PackagePlan2";
 
 const fetchTravelPackages = async () => {
   try {
-    const response = await axios.get("http://localhost:9000/packages");
+    const response = await axios.get("https://assignment-12-server-three-iota.vercel.app/packages");
     if (response.status === 200) {
       return response.data; // Returns the data if the status is 200 (OK)
     } else {

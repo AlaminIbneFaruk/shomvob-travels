@@ -6,14 +6,14 @@ import Gallery from "../Components/Gallery";
 // Fetch package details
 const fetchPackageDetails = async ({ queryKey }) => {
   const [, id] = queryKey;
-  const response = await axios.get(`http://localhost:9000/packages/${id}`);
+  const response = await axios.get(`https://assignment-12-server-three-iota.vercel.app/packages/${id}`);
   return response.data;
 };
 
 // Fetch tour guide details based on tourGuideIds
 const fetchTourGuideDetails = async ({ queryKey }) => {
   const [, tourGuideIds] = queryKey;
-  const response = await axios.get(`http://localhost:9000/guides`, {
+  const response = await axios.get(`https://assignment-12-server-three-iota.vercel.app/guides`, {
     params: { ids: tourGuideIds.join(",") }, // Send all tourGuideIds as a comma-separated string
   });
   return response.data;
@@ -78,8 +78,8 @@ const PackageDetails = () => {
   }
 
   return (
-    <div className="flex items-center justify-center bg-blue-200 p-8 mt-12">
-      <div className="card w-full max-w-6xl shadow-xl bg-base-100 p-6 rounded-xl">
+    <div className="flex items-center justify-center bg-blue-200 px-8">
+      <div className="card w-full max-w-6xl shadow-xl bg-base-100 px-6 rounded-xl">
         <div className=" text-sky-900">
           <h2 className="text-4xl font-bold text-center mb-6">
             {packageData.name || "Package Name"}

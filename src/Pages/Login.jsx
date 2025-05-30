@@ -71,7 +71,7 @@ const Login = () => {
        flex justify-center items-center"
       >
 
-        <div className="card bg-base-100 w-full max-w-sm mx-auto shrink-0 shadow-2xl z-20">
+        <div className="card bg-base-100 w-full max-w-sm mx-auto shrink-0 shadow-2xl z-0">
           <div
             className=" max-w-60 text-center font-serif font-extrabold text-3xl md:text-4xl text-sky-500 py-4 uppercase tracking-wider pt-5 mx-auto "
           >

@@ -27,7 +27,7 @@ const UserStories = () => {
     queryKey: ["reviews"],
     queryFn: async () => {
       const response = await axiosInstance.get(
-        "http://localhost:9000/stories/random"
+        "https://assignment-12-server-three-iota.vercel.app/stories/random"
       );
       return response.data;
     },

@@ -71,6 +71,10 @@ const AssignedTours = () => {
                     <td>{tour.tourDate}</td>
                     <td>${tour.price}</td>
                     <td className="font-medium">{tour.status}</td>
+                    <td className="font-medium">
+                      <button className="btn btn-info">Accept</button>
+                      <button className="btn btn-error">Reject</button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

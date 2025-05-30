@@ -17,14 +17,14 @@ const TourGuideDashboard = () => {
       {
         icon: <FaUserCircle />,
         label: "Manage Profile",
-        path: "/tourguidedashboard",
+        path: "/guide-dashboard",
       },
       {
         icon: <FaLocationArrow />,
         label: "My Assigned Tours",
         path: "assigned-tours",
       },
-      { icon: <FaPlusCircle />, label: "Add Stories", path: "add-stories" },
+      { icon: <FaPlusCircle />, label: "Add Stories", path: "/guide-dashboard/add-stories" },
       { icon: <FaArrowCircleLeft />, label: "Home", path: "/" },
     ],
   };
@@ -51,7 +51,7 @@ const TourGuideDashboard = () => {
             className="flex items-center justify-center p-2 rounded-md hover:bg-blue-500 focus:outline-none mb-4 transition-all duration-300"
           >
             <img
-              src="https://i.ibb.co.com/DgDYdY8J/Shomvob-travels.png"
+              src="https://i.ibb.co/1trCM9S7/Shomvob-travels.png"
               alt="logo"
               className={`transition-all duration-300 ${
                 isSidebarOpen ? "w-32" : "w-12"

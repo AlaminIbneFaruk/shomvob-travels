@@ -89,7 +89,8 @@ const Routes = createBrowserRouter([
         element: <PrivateRoutes><TourGuideDashboard /></PrivateRoutes>,
         children: [
           { path:"", element: <ManageProfileTG /> },
-          { path: "assignedtours", element: <AssignedTours /> },
+          { path: "updateprofile/:userid", element: <UpdateProfile/> },
+          { path: "assigned-tours", element: <AssignedTours /> },
           { path: "add-stories", element: <AddStories /> },
           { path: "manage-stories/:userid", element: <ManageStories /> },
         ],
@@ -99,6 +100,7 @@ const Routes = createBrowserRouter([
         element: <PrivateRoutes><AdminDashboard /></PrivateRoutes>,
         children: [
           { path:"", element: <ManageProfileAdmin /> },
+          { path: "updateprofile/:userid", element: <UpdateProfile/> },
           { path: "add-package", element: <AddPackageForm /> },
           { path: "manage-users", element: <ManageUsers /> },
           { path: "manage-candidates", element: <ManageTourguides /> },

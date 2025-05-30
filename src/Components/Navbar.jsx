@@ -47,13 +47,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="absolute top-0 left-0 w-full bg-sky-400 shadow-md p-5 flex justify-between items-center z-50">
+    <nav className=" top-0 left-0 w-full bg-sky-400 shadow-md p-5 flex justify-between items-center z-50 lg:sticky">
       <Link
         to="/"
         className="btn btn-ghost font-extrabold text-lg lg:text-3xl "
       >
         <img
-          src="https://i.ibb.co.com/DgDYdY8J/Shomvob-travels.png"
+          src="https://i.ibb.co/1trCM9S7/Shomvob-travels.png"
           alt="Shomvob travels logo"
           className="w-auto h-10 rounded-xl object-cover"
         />
@@ -148,7 +148,7 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-sky-400 shadow-md flex flex-col items-center p-4 md:hidden">
+        <div className="absolute top-16 left-0 w-full bg-sky-400 shadow-md flex flex-col items-center p-4 z-10 md:hidden">
           {["/", "/community", "/about", "/trips"].map((route) => (
             <Link
               key={route}

@@ -1,8 +1,6 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Carousel } from "react-responsive-carousel";
+import { motion } from "framer-motion";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Hero from "../../Components/Hero";
 
 const slides = [
@@ -28,21 +26,29 @@ const slides = [
 
 const Slider = () => {
   return (
-    <div className="w-full min-h-[20vh] md:mt-24 bg-sky-200">
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
-        loop
-        className="shadow-lg -z-10"
+    <div className="w-full min-h-[20vh] bg-sky-200">
+      <Carousel
+        showArrows={true}
+        showThumbs={false}
+        showStatus={false}
+        autoPlay
+        infiniteLoop
+        interval={5000}
+        transitionTime={800}
+        emulateTouch
+        className="z-0"
       >
         {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+          >
             <Hero {...slide} />
-          </SwiperSlide>
+          </motion.div>
         ))}
-      </Swiper>
+      </Carousel>
     </div>
   );
 };

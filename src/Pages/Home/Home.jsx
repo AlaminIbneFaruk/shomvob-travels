@@ -10,8 +10,6 @@ import InteractiveMap from "./InteractiveMap.jsx";
 const Home = () => {
   return (
     <>
-
-
       <Slider />
       <OverviewSection />
       

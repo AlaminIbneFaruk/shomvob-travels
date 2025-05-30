@@ -62,7 +62,7 @@ const BookForm = () => {
         createdAt: new Date(),
       };
 
-      const response = await fetch("http://localhost:9000/bookings/", {
+      const response = await fetch("https://assignment-12-server-three-iota.vercel.app/bookings/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

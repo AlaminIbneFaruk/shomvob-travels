@@ -17,7 +17,7 @@ const UserStories = () => {
   const { user } = useContext(AuthContext);
   useEffect(() => {
     axios
-      .get("http://localhost:9000/stories") // Fetch data from JSON file
+      .get("https://assignment-12-server-three-iota.vercel.app/stories") // Fetch data from JSON file
       .then((response) => {
         console.log("Fetched Data:", response.data); // Debugging step
         setReviews(Array.isArray(response.data) ? response.data : []);

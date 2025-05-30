@@ -6,25 +6,27 @@ const Hero = ({ title, description, image, buttonText, motionEffect }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="hero text-black w-full flex flex-col lg:flex-row-reverse items-center mx-auto relative">
-      {/* Image Section */}
+    <div className="hero text-black w-full flex flex-col lg:flex-row-reverse items-center mx-auto relative h-[60vh]">
+      {/* Image Section in <figure> */}
       {image && (
-        <motion.img
-          src={image}
-          alt={title || "Hero Image"}
-          className="w-full h-full object-cover lg:w-3/4 lg:h-full rounded-none lg:rounded-e-lg shadow-none "
-          initial={{
-            opacity: 0,
-            x: motionEffect === "slide" ? 100 : 0,
-            scale: 1.05,
-          }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ duration: 1 }}
-        />
+        <figure className="w-full lg:w-1/3">
+          <motion.img
+            src={image}
+            alt={title || "Hero Image"}
+            className="w-full object-cover h-80 rounded-none lg:rounded-e-lg shadow-none"
+            initial={{
+              opacity: 0,
+              x: motionEffect === "slide" ? 100 : 0,
+              scale: 1.05,
+            }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 1 }}
+          />
+        </figure>
       )}
 
-      {/* Text Section (Absolute on Mobile, Relative on Large Screens) */}
-      <div className="absolute lg:relative inset-0 flex flex-col justify-center items-center lg:items-start text-center lg:text-left p-6 w-full lg:w-1/2 z-10 bg-black bg-opacity-50 lg:bg-opacity-0 text-white lg:text-black">
+      {/* Text Section */}
+      <div className="absolute lg:relative inset-0 flex flex-col justify-center items-center lg:items-start text-center lg:text-left p-6 w-full lg:w-2/3 -z-10 lg:z-10 bg-black bg-opacity-50 lg:bg-opacity-0 text-white lg:text-black">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
           {title}
         </h1>

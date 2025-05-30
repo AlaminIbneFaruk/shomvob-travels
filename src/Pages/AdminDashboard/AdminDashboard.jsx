@@ -41,7 +41,7 @@ const AdminDashboard = () => {
       <Helmet>
         <title>Admin Dashboard | Shomvob Travels</title>
       </Helmet>
-      <div className="flex bg-sky-200 flex-col md:flex-row">
+      <div className="flex bg-sky-200 flex-col md:flex-row h-full">
         {/* Sidebar */}
         <aside
           className={`bg-gray-800 text-white p-4 shadow-lg transition-all duration-300 ${
@@ -53,7 +53,7 @@ const AdminDashboard = () => {
             className="flex items-center justify-center p-2 rounded-md hover:bg-gray-200 focus:outline-none mb-4 transition-all duration-300"
           >
             <img
-              src="https://i.ibb.co.com/DgDYdY8J/Shomvob-travels.png"
+              src="https://i.ibb.co/1trCM9S7/Shomvob-travels.png"
               alt="logo"
               className={`transition-all duration-300 ${isSidebarOpen ? "w-32" : "w-12"}`}
             />

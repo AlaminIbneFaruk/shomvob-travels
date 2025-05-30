@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 
 // Configure axios instance
 const api = axios.create({
@@ -11,16 +11,16 @@ const api = axios.create({
 });
 
 // Add request interceptor for auth token
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+// api.interceptors.request.use((config) => {
+//   const token = localStorage.getItem("token");
+//   if (token) {
+//     config.headers.Authorization = `Bearer ${token}`;
+//   }
+//   return config;
+// });
 
 const MyBookings = () => {
-  const navigate = useNavigate();
+
   const queryClient = useQueryClient();
 
   // Fetch bookings query
@@ -48,9 +48,15 @@ const MyBookings = () => {
     },
   });
 
-  const handlePayment = (bookingId) => {
-    navigate(`/payment/${bookingId}`);
-  };
+  const handlePayment = async (bookingId, price) => {
+    try {
+      const response = await api.post("/payment/create-checkout-session", { bookingId, price });
+      window.location.href = response.data.url; // Redirect to Stripe Checkout
+    } catch (error) {
+      console.error("Payment error:", error);
+      alert("Payment failed. Try again.");
+    }
+  };  
 
   const handleCancel = (bookingId) => {
     const confirmCancel = window.confirm("Are you sure you want to cancel this booking?");

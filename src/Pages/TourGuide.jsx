@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 const fetchTourGuide = async ({ queryKey }) => {
   const [, id] = queryKey;
   try {
-    const response = await axios.get(`http://localhost:9000/guides/${id}`);
+    const response = await axios.get(`https://assignment-12-server-three-iota.vercel.app/guides/${id}`);
     if (!response.data) {
       throw new Error('No tour guide data found');
     }

@@ -12,7 +12,7 @@ const Footer = () => {
         {/* Company Info */}
         <div>
           <img
-            src="https://i.ibb.co.com/DgDYdY8J/Shomvob-travels.png"
+            src="https://i.ibb.co/1trCM9S7/Shomvob-travels.png"
             alt="Shomvob travels logo"
             className="w-auto h-24 rounded-xl object-cover"
           />

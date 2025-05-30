@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const fetchAdminStats = async () => {
   const currentYear = new Date().getFullYear();
   const response = await axios.get(
-    `http://localhost:9000/admin-stats/${currentYear}`
+    `https://assignment-12-server-three-iota.vercel.app/admin-stats/${currentYear}`
   );
 
   if (!response.data) {
@@ -17,7 +18,7 @@ const fetchAdminStats = async () => {
 
 const ManageProfileAdmin = () => {
   const { user } = useContext(AuthContext);
-
+  const navigate=useNavigate();
   const {
     data: stats = {
       totalPayment: 0,
@@ -90,7 +91,7 @@ const ManageProfileAdmin = () => {
         )}
 
         <div className="mt-6">
-          <button className="btn bg-blue-500 w-full btn-outline border border-b-4">
+          <button className="btn bg-blue-500 w-full btn-outline border border-b-4" onClick={()=>{navigate(`/admin-dashboard/updateprofile/${user?.uid}`)}}>
             Edit Profile
           </button>
         </div>

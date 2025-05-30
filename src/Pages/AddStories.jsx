@@ -61,7 +61,7 @@ const AddStories = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:9000/stories",
+        "https://assignment-12-server-three-iota.vercel.app/stories",
         storyData,
         {
           timeout: 10000, // Add timeout for network requests
