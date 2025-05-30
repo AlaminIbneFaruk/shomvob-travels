@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import PackagePlan2 from "../Components/PackagePlan2";
+import { ClipLoader } from 'react-spinners';
 
 const fetchTravelPackages = async () => {
   try {
@@ -30,7 +31,13 @@ const Trip = () => {
   });
 
   if (isLoading) {
-    return <div className="loader">Loading...</div>;
+    return <div className="loader card shadow-xl justify-self-center"> <ClipLoader
+        color="#36d7b7"
+        loading={isLoading}
+        size={500}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      /></div>;
   }
 
   if (isError) {
@@ -50,9 +57,9 @@ const Trip = () => {
       : `Travel Packages (${travelPackages.length})`;
 
   return (
-    <div className="mt-24 lg:mt-0">
+    <div className=" lg:mt-0">
       <section
-        className="bg-fixed bg-cover bg-center min-h-screen mt-24 mx-auto gap-8"
+        className="bg-fixed bg-cover bg-center min-h-screen mx-auto gap-8"
         style={{
           backgroundImage: "url('https://i.ibb.co/wFhzgbjX/heroimg1.jpg')",
         }}

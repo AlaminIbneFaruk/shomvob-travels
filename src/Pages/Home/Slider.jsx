@@ -26,7 +26,7 @@ const slides = [
 
 const Slider = () => {
   return (
-    <div className="w-full min-h-[20vh] bg-sky-200">
+    <div className="w-full bg-sky-200">
       <Carousel
         showArrows={true}
         showThumbs={false}

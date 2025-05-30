@@ -11,9 +11,8 @@ const Navbar = () => {
 
   // Check if current path is inside dashboard routes
   const isDashboardPath = location.pathname.startsWith("/user-dashboard");
-  const isTourGuideDashboardPath = location.pathname.startsWith(
-    "/guide-dashboard"
-  );
+  const isTourGuideDashboardPath =
+    location.pathname.startsWith("/guide-dashboard");
   const isAdminDashboardPath = location.pathname.startsWith("/admin-dashboard");
 
   // Ref for closing dropdown on outside click
@@ -99,7 +98,7 @@ const Navbar = () => {
                   alt="Profile"
                   className="w-10 h-10 rounded-full border border-white object-cover"
                   onError={(e) => {
-                    e.currentTarget.src = "https://placehold.co/10?text=user"; 
+                    e.currentTarget.src = "https://placehold.co/10?text=user";
                   }}
                 />
               ) : (
@@ -137,7 +136,23 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className="md:hidden">
+      <div className="md:hidden flex gap-6">
+        <div
+          className="flex items-center gap-2 focus:outline-none"
+        >
+          {user?.photoURL ? (
+            <img
+              src={`${user.photoURL}?sz=150`}
+              alt="Profile"
+              className="w-10 h-10 rounded-full border border-white object-cover"
+              onError={(e) => {
+                e.currentTarget.src = "https://placehold.co/10?text=user";
+              }}
+            />
+          ) : (
+            <FaRegUserCircle className="w-10 h-10 text-white" />
+          )}
+        </div>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="text-white text-2xl"

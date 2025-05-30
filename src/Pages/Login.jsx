@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 
-import axios from 'axios';
+import axios from "axios";
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [success, setSuccess] = useState(false);
@@ -16,21 +16,22 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-  
+
     setErrorMessage("");
     setSuccess(false);
-  
+
     signInUser(email, password)
       .then((userCredential) => {
         const user = { email: userCredential.user.email };
-  
+
         // Send user email to backend and store JWT in cookies
-        axios.post("http://localhost:8000/auth/login", user)
-          .then(data => {
+        axios
+          .post("http://localhost:8000/auth/login", user)
+          .then((data) => {
             console.log("JWT Set in Cookies:", data);
           })
-          .catch(err => console.error("JWT Error:", err));
-  
+          .catch((err) => console.error("JWT Error:", err));
+
         setSuccess(true);
         e.target.reset();
         navigate("/");
@@ -39,42 +40,33 @@ const Login = () => {
         setErrorMessage(`Error: ${error.message}`);
       });
   };
-  
 
   const handleGoogle = (e) => {
     e.preventDefault();
     signInGoogle()
       .then((result) => {
         const user = { email: result.user.email };
-  
-        axios.post("http://localhost:8000/jwt", user, { withCredentials: true })
-          .then(res => {
-            console.log("Google JWT Set in Cookies:", res.data);
-            navigate("/");
-          })
-          .catch(err => console.error("Google JWT Error:", err));
+        {
+          console.log("User",user);
+          navigate("/");
+        }
       })
       .catch((error) => {
         setErrorMessage(`Error: ${error.message}`);
       });
   };
-  
 
-  const handleReset=()=>{
-    resetPassword()
-  }
+  const handleReset = () => {
+    resetPassword();
+  };
   return (
     <>
-
       <div
         className="py-20 bg-gradient-to-r from-cyan-400  to-blue-500 
        flex justify-center items-center"
       >
-
         <div className="card bg-base-100 w-full max-w-sm mx-auto shrink-0 shadow-2xl z-0">
-          <div
-            className=" max-w-60 text-center font-serif font-extrabold text-3xl md:text-4xl text-sky-500 py-4 uppercase tracking-wider pt-5 mx-auto "
-          >
+          <div className=" max-w-60 text-center font-serif font-extrabold text-3xl md:text-4xl text-sky-500 py-4 uppercase tracking-wider pt-5 mx-auto ">
             Login Now
           </div>
           <form className="card-body" onSubmit={handleLogin}>
@@ -103,7 +95,11 @@ const Login = () => {
                 required
               />
               <label className="label">
-                <button to="#" className="label-text-alt link link-hover" onClick={handleReset}>
+                <button
+                  to="#"
+                  className="label-text-alt link link-hover"
+                  onClick={handleReset}
+                >
                   Forgot password?
                 </button>
               </label>
@@ -130,9 +126,7 @@ const Login = () => {
               <span className="text-3xl">Google</span>
             </button>
             <div>
-              <p
-                className={errorMessage ? `text-red-500` : `text-green-600`}
-              >
+              <p className={errorMessage ? `text-red-500` : `text-green-600`}>
                 {errorMessage
                   ? `${errorMessage}`
                   : `${success ? `Logged in Successfull` : ""}`}

@@ -17,7 +17,7 @@ const About = () => {
           <div className="card bg-base-100 shadow-lg hover:shadow-2xl p-6">
             <div className="avatar flex justify-center">
               <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src="" alt="Developer" />
+                <img src="https://i.ibb.co/W4WFSC1Q/IMG-20250321-172740.jpg" alt="Developer" />
               </div>
             </div>
             <div className="text-center mt-4">
