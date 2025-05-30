@@ -17,7 +17,7 @@ const PackagePlan2 = ({ packageplan }) => {
 
   return (
     <div
-      className="group w-full bg-white shadow-xl rounded-2xl p-8 border border-gray-200 transition duration-300 
+      className="group w-full bg-white shadow-xl rounded-2xl p-8 border border-gray-200  duration-300 
        hover:border-blue-600 hover:shadow-2xl "
     >
       {/* Image Collage Section */}
@@ -27,21 +27,21 @@ const PackagePlan2 = ({ packageplan }) => {
           src={stockImages[0]}
           alt={`${name} package 1`}
           className="absolute top-0 left-[10%] w-2/3 h-48 object-cover rounded-lg transform -rotate-6 
-          transition duration-300 hover:rotate-0 hover:z-20 pt-2 px-2 pb-10 shadow-xl bg-white"
+          transition-all duration-300 hover:rotate-0  hover:z-20 pt-2 px-2 pb-10 shadow-xl bg-white"
         />
         {/* Second Image */}
         <img
           src={stockImages[1]}
           alt={`${name} package 2`}
           className="absolute top-0 left-[21%] w-2/3 h-48 object-cover rounded-lg transform rotate-0 
-          transition duration-300 z-10 hover:scale-110 pt-2 px-2 pb-10 shadow-xl bg-white "
+          transition-all duration-300 z-10 hover:scale-110 pt-2 px-2 pb-10 shadow-xl bg-white "
         />
         {/* Third Image */}
         <img
           src={stockImages[2]}
           alt={`${name} package 3`}
           className="absolute top-0 right-0 w-2/3 h-48 object-cover rounded-lg transform rotate-[21deg] 
-          transition duration-300 hover:rotate-0 hover:z-10  pt-2 px-2 pb-10 shadow-xl bg-white"
+          transition-all duration-300 hover:rotate-0 hover:z-10  pt-2 px-2 pb-10 shadow-xl bg-white"
         />
       </div>
 
@@ -53,16 +53,16 @@ const PackagePlan2 = ({ packageplan }) => {
           <span className="text-3xl font-bold text-blue-600  transition">
             ৳{price.toFixed(2)}
           </span>
-          <span className="transition"> / package</span>
+          <span className=""> / package</span>
         </div>
       </div>
 
       {/* Button Section */}
       <div
-        className="bg-gray-100 rounded-lg shadow-md p-5 mt-4 transition duration-300"
+        className="bg-gray-100 rounded-lg shadow-md p-5 mt-4  duration-300"
       >
         <button
-          className="btn btn-outline border-b-4 mt-5 w-full bg-blue-600 text-white font-semibold py-2 rounded-lg transition duration-300 
+          className="btn btn-outline border-b-4 mt-5 w-full bg-blue-600 text-white font-semibold py-2 rounded-lg duration-300 
           hover:scale-105 border"
           onClick={handleViewMore}
         >

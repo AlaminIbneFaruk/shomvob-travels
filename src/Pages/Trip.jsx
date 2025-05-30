@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import PackagePlan2 from "../Components/PackagePlan2";
 import { ClipLoader } from 'react-spinners';
+import ErrorPage from "./ErrorPage";
 
 const fetchTravelPackages = async () => {
   try {
@@ -43,9 +44,10 @@ const Trip = () => {
   if (isError) {
     return (
       <>
-        <p className="text-red-500">Error loading travel packages.</p>
-        {/* Log the error for debugging */}
-        {console.error("Error loading travel packages")}
+        <div className="w-full flex items-center justify-center">
+
+        <ErrorPage/>
+        </div>
       </>
     );
   }
