@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import PackagePlan2 from "../Components/PackagePlan2";
 import { ClipLoader } from 'react-spinners';
-import ErrorPage from "./ErrorPage";
+import ErrorF2F from "./ErrorF2F";
 
 const fetchTravelPackages = async () => {
   try {
@@ -46,7 +46,7 @@ const Trip = () => {
       <>
         <div className="w-full flex items-center justify-center">
 
-        <ErrorPage/>
+        <ErrorF2F/>
         </div>
       </>
     );

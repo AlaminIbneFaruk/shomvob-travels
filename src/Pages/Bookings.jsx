@@ -1,29 +1,20 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-
-// Configure axios instance
+// Axios instance
 const api = axios.create({
-  baseURL: "http://localhost:9000",
+  baseURL: "https://assignment-12-server-three-iota.vercel.app/",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-// Add request interceptor for auth token
-// api.interceptors.request.use((config) => {
-//   const token = localStorage.getItem("token");
-//   if (token) {
-//     config.headers.Authorization = `Bearer ${token}`;
-//   }
-//   return config;
-// });
-
 const MyBookings = () => {
-
   const queryClient = useQueryClient();
 
-  // Fetch bookings query
+  // Fetch bookings
   const { data: bookings = [], isLoading, error } = useQuery({
     queryKey: ["bookings"],
     queryFn: async () => {
@@ -32,32 +23,37 @@ const MyBookings = () => {
     },
   });
 
-  // Cancel booking mutation
+  // Cancel mutation
   const cancelBookingMutation = useMutation({
     mutationFn: (bookingId) => api.delete(`/bookings/${bookingId}`),
     onSuccess: (_, bookingId) => {
-      // Update the bookings cache
       queryClient.setQueryData(["bookings"], (oldData) =>
         oldData.filter((booking) => booking._id !== bookingId)
       );
-      alert("Booking cancelled successfully.");
+      toast.success("Booking cancelled successfully.");
     },
     onError: (error) => {
       console.error("Error cancelling booking:", error);
-      alert("Failed to cancel booking.");
+      toast.error("Failed to cancel booking.");
     },
   });
 
+  // Handle Stripe payment
   const handlePayment = async (bookingId, price) => {
     try {
-      const response = await api.post("/payment/create-checkout-session", { bookingId, price });
-      window.location.href = response.data.url; // Redirect to Stripe Checkout
+      const response = await api.post("/payment/create-checkout-session", {
+        bookingId,
+        price,
+      });
+      toast.info("Redirecting to payment...");
+      window.location.href = response.data.url;
     } catch (error) {
       console.error("Payment error:", error);
-      alert("Payment failed. Try again.");
+      toast.error("Payment failed. Try again.");
     }
-  };  
+  };
 
+  // Handle cancel logic
   const handleCancel = (bookingId) => {
     const confirmCancel = window.confirm("Are you sure you want to cancel this booking?");
     if (confirmCancel) {
@@ -75,6 +71,7 @@ const MyBookings = () => {
   }
 
   if (error) {
+    toast.error("Failed to load bookings.");
     return (
       <div className="container mx-auto p-6 my-20">
         <h2 className="text-2xl font-semibold mb-4">My Bookings</h2>
@@ -111,7 +108,7 @@ const MyBookings = () => {
                     <>
                       <button
                         className="bg-blue-500 text-white px-4 py-1 rounded mr-2"
-                        onClick={() => handlePayment(booking._id)}
+                        onClick={() => handlePayment(booking._id, booking.price)}
                       >
                         Pay
                       </button>

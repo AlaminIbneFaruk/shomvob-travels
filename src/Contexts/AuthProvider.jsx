@@ -10,6 +10,7 @@ import {
   signOut,
   sendPasswordResetEmail,
 } from "firebase/auth";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext(null);
 const provider = new GoogleAuthProvider();
@@ -17,57 +18,59 @@ const provider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [token, setToken] = useState(null); // State for JWT token
 
   const createUser = async (email, password) => {
     setLoading(true);
     try {
-      // Create user with Firebase
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      // Send request to backend to register the user and get JWT
-      const response = await fetch('YOUR_API_ENDPOINT/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          password,
-          uid: user.uid, // Optionally send the user ID
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to register user');
-      }
-
-      const data = await response.json();
-      setToken(data.token); // Set JWT token
-
       setLoading(false);
-      return user;
+      toast.success("Account created successfully!");
+      return userCredential.user;
     } catch (error) {
       setLoading(false);
+      toast.error(error.message);
       throw error;
     }
   };
 
-  const signInUser = (email, password) => {
+  const signInUser = async (email, password) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      setLoading(false);
+      toast.success("Login successful!");
+      return userCredential.user;
+    } catch (error) {
+      setLoading(false);
+      toast.error(error.message);
+      throw error;
+    }
   };
 
-  const signInGoogle = () => {
+  const signInGoogle = async () => {
     setLoading(true);
-    return signInWithPopup(auth, provider);
+    try {
+      const result = await signInWithPopup(auth, provider);
+      setLoading(false);
+      toast.success("Logged in with Google!");
+      return result.user;
+    } catch (error) {
+      setLoading(false);
+      toast.error(error.message);
+      throw error;
+    }
   };
 
-  const signOutUser = () => {
-    alert("Are you sure to logout?");
+  const signOutUser = async () => {
     setLoading(true);
-    return signOut(auth);
+    try {
+      await signOut(auth);
+      toast.success("Logged out successfully!");
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const resetPassword = (email) => {
@@ -75,10 +78,11 @@ const AuthProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email)
       .then(() => {
         setLoading(false);
-        return "Password reset email sent!";
+        toast.success("Password reset email sent!");
       })
       .catch((error) => {
         setLoading(false);
+        toast.error(error.message);
         throw error;
       });
   };
@@ -88,15 +92,12 @@ const AuthProvider = ({ children }) => {
       setUser(user);
       setLoading(false);
     });
-    return () => {
-      unsubscribe();
-    };
+    return () => unsubscribe();
   }, []);
 
   const AuthInfo = {
     loading,
     user,
-    token, // Include token in context
     createUser,
     signInUser,
     signOutUser,

@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import PackagePlan from '../../Components/PackagePlan';
 import { ClipLoader } from 'react-spinners';
-import ErrorPage from "../ErrorPage";
+import ErrorF2F from "../ErrorF2F";
 const fetchPackages = async () => {
   const response = await axios.get('https://assignment-12-server-three-iota.vercel.app/packages/random');
   const data = response.data;
@@ -41,7 +41,7 @@ const PlanSection = () => {
 
   if (error) {
     return <div className="text-center text-red-500">
-      <ErrorPage/>
+      <ErrorF2F error={error}/>
     </div>;
   }
 
