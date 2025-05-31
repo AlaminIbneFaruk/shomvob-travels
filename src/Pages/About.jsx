@@ -1,7 +1,7 @@
 const About = () => {
   return (
     <>
-      <div className="card max-w-4xl mx-auto mt-32 mb-8">
+      <div className="card max-w-4xl mx-auto my-8">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-primary mb-4">
             About Shomvob Travels

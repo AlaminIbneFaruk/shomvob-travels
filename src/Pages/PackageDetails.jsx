@@ -59,7 +59,7 @@ const PackageDetails = () => {
 
   if (packageLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-blue-200 p-20">
+      <div className="min-h-screen flex items-center justify-center bg-blue-200">
         <div className="animate-pulse w-full max-w-6xl bg-gray-300 h-96 rounded-lg"></div>
       </div>
     );

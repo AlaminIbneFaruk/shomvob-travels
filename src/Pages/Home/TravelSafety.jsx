@@ -21,7 +21,7 @@ const TravelSafety = () => {
   ];
 
   return (
-    <div className="p-6 bg-sky-100 rounded-lg shadow-lg max-w-4xl mx-auto my-8">
+    <div className="p-6 bg-sky-200 rounded-lg shadow-lg mx-auto ">
       <h2 className="text-4xl font-bold text-center mb-4 text-gray-800">Travel Insurance & Safety</h2>
       
       {/* Tabs */}

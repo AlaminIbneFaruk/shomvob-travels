@@ -16,8 +16,8 @@ const PackagePlan = ({ packageplan }) => {
 
   return (
     <div
-      className="group w-full bg-white shadow-xl rounded-2xl p-8 border border-gray-200 transition duration-300 
-      hover:bg-sky-600 hover:text-white hover:border-blue-600 hover:shadow-2xl hover:scale-105"
+      className=" w-full bg-white shadow-xl rounded-2xl p-8 border border-gray-200 transition duration-300 
+        hover:border-blue-600 hover:shadow-2xl hover:scale-105"
     >
       {/* Outer Section */}
       <div className="">

@@ -9,13 +9,12 @@ A modern full-stack tourism management platform that simplifies tour booking, to
 * **Username:** [admin@tms.com](mailto:admin@tms.com)
 * **Password:** Admin\@123
 
-> ⚠️ These credentials are for demonstration purposes only. Do not use them in production.
 
 ---
 
 ## 🔗 Live Website
 
-👉 [Visit the Live Site](https://your-tourism-management.vercel.app)
+👉 [Visit the Live Site](https://shomvobtravels.netlify.app/)
 
 ---
 
@@ -95,13 +94,14 @@ npm install
 Create a `.env` file inside the `client` directory:
 
 ```env
+VITE_FIREBASE_API_KEY=AIzaSyAWlR_TIj_UEG-u4KsQOOiKSEtVvaad1vY
+VITE_FIREBASE_AUTH_DOMAIN=shomvob-travels.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=shomvob-travels
+VITE_FIREBASE_STORAGE_BUCKET=shomvob-travels.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=817731721427
+VITE_FIREBASE_APP_ID=1:817731721427:web:96db422aecbf9e68d8dc26
+
 VITE_API_BASE_URL=http://localhost:5000
-VITE_FIREBASE_API_KEY=your_firebase_api_key
-VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
-VITE_FIREBASE_PROJECT_ID=your_project_id
-VITE_FIREBASE_STORAGE_BUCKET=your_bucket
-VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-VITE_FIREBASE_APP_ID=your_app_id
 VITE_STRIPE_PUBLIC_KEY=your_stripe_public_key
 ```
 
@@ -123,10 +123,10 @@ npm install
 Create a `.env` file inside the `server` directory:
 
 ```env
-PORT=5000
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_jwt_secret
-STRIPE_SECRET_KEY=your_stripe_secret_key
+DB_USER =ShomvobTravelsAdmin
+DB_PASS =3sBq3MgBNkLSUNQl
+ACCESS_TOKEN_SECRET=0p9D@!zYk6
+STRIPE_TOKEN_SECRET=saDg@sdFg!wqre
 ```
 
 To start the backend:

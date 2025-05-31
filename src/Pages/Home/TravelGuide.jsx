@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from 'axios';
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-
+import { ClipLoader } from 'react-spinners';
 const fetchTourGuides = async () => {
   const response = await axios.get("https://assignment-12-server-three-iota.vercel.app/guides/random");
   if (!response.data) {
@@ -23,7 +23,13 @@ const TravelGuide = () => {
     queryFn: fetchTourGuides,
   });
 
-  if (isLoading) return <div className="loader">Loading...</div>;
+  if (isLoading) return <div className="loader"><ClipLoader
+        color="#36d7b7"
+        loading={isLoading}
+        size={500}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      /></div>;
   if (isError) return <p className="text-red-500">Error loading tour guides.</p>;
 
   return (

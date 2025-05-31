@@ -6,14 +6,14 @@ const Hero = ({ title, description, image, buttonText, motionEffect }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="hero text-black w-full flex flex-col lg:flex-row-reverse items-center mx-auto relative h-[60vh]">
+    <div className="hero text-black w-full flex flex-col lg:flex-row-reverse items-center mx-auto relative">
       {/* Image Section in <figure> */}
       {image && (
         <figure className="w-full lg:w-1/3">
           <motion.img
             src={image}
             alt={title || "Hero Image"}
-            className="w-full object-cover h-80 rounded-none lg:rounded-e-lg shadow-none"
+            className="w-full object-cover lg:h-[60%] rounded-none lg:rounded-e-lg shadow-none"
             initial={{
               opacity: 0,
               x: motionEffect === "slide" ? 100 : 0,

@@ -14,7 +14,7 @@ const Footer = () => {
           <img
             src="https://i.ibb.co/1trCM9S7/Shomvob-travels.png"
             alt="Shomvob travels logo"
-            className="w-auto h-24 rounded-xl object-cover"
+            className="w-auto h-24 rounded-xl object-cover mx-auto lg:mx-0"
           />
           <h2 className="text-2xl font-semibold mb-3">Shomvob Travels</h2>
           <p className="text-gray-100">

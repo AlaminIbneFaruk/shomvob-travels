@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import PackagePlan from '../../Components/PackagePlan';
-
+import { ClipLoader } from 'react-spinners';
+import ErrorPage from "../ErrorPage";
 const fetchPackages = async () => {
   const response = await axios.get('https://assignment-12-server-three-iota.vercel.app/packages/random');
   const data = response.data;
@@ -29,11 +30,19 @@ const PlanSection = () => {
   });
 
   if (isLoading) {
-    return <div className="text-center text-lg font-semibold">Loading packages...</div>;
+    return <div className="text-center text-lg font-semibold"><ClipLoader
+        color="#36d7b7"
+        loading={isLoading}
+        size={500}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      /></div>;
   }
 
   if (error) {
-    return <div className="text-center text-red-500">Error fetching packages: {error.message}</div>;
+    return <div className="text-center text-red-500">
+      <ErrorPage/>
+    </div>;
   }
 
   return (

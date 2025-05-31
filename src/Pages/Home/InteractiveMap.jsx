@@ -16,7 +16,7 @@ const destinations = [
 
 const InteractiveMap = () => {
   return (
-    <div className="bg-sky-200 p-6 my-8">
+    <div className="bg-sky-200 p-6 ">
       <div className="text-2xl lg:text-3xl font-extrabold mb-4 text-center">
         <h2>Interactive Map of Bangladesh: Must-Visit Spots</h2>
       </div>
