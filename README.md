@@ -107,17 +107,6 @@ npm run dev
 
 ---
 
-Create a `.env` file inside the `server` directory:
-
-```env
-DB_USER =ShomvobTravelsAdmin
-DB_PASS =3sBq3MgBNkLSUNQl
-ACCESS_TOKEN_SECRET=0p9D@!zYk6
-STRIPE_TOKEN_SECRET=saDg@sdFg!wqre
-```
-
-To start the backend:
-
 ```bash
 npm run dev
 ```
