@@ -15,6 +15,7 @@ A modern full-stack tourism management platform that simplifies tour booking, to
 ## 🔗 Live Website
 
 👉 [Visit the Live Site](https://shomvobtravels.netlify.app/)
+👉 [Github Repo](https://github.com/AlaminIbneFaruk/shomvob-travels)
 
 ---
 
@@ -78,18 +79,11 @@ A modern full-stack tourism management platform that simplifies tour booking, to
 ### 🚀 Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/tourism-management-system.git
-cd tourism-management-system
+git clone https://github.com/AlaminIbneFaruk/shomvob-travels.git
+cd shomvob-travels
 ```
 
 ---
-
-### 📂 Setup Frontend
-
-```bash
-cd client
-npm install
-```
 
 Create a `.env` file inside the `client` directory:
 
@@ -113,13 +107,6 @@ npm run dev
 
 ---
 
-### 🛠️ Setup Backend
-
-```bash
-cd server
-npm install
-```
-
 Create a `.env` file inside the `server` directory:
 
 ```env
@@ -139,8 +126,7 @@ npm run dev
 
 ### ✅ Final Steps
 
-* Make sure both frontend (`http://localhost:5173`) and backend (`http://localhost:5000`) are running.
-* Test the full flow: register/login → book tour → select guide → pay → track status.
+* Make sure  frontend (`http://localhost:5173`) and * Test the full flow: register/login → book tour → select guide → pay → track status.
 
 ---
 
